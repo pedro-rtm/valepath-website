@@ -1,0 +1,301 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base
+  title="Valepath — Technology Due Diligence for PE Transactions"
+  description="Structured technology assessment for PE-backed transactions. Quantified risk scoring, cost-to-fix estimates, and value creation roadmaps in 10–15 days."
+>
+  <div class="page">
+
+    <!-- Header -->
+    <header class="header">
+      <div class="header__brand">Valepath</div>
+      <nav class="header__nav">
+        <a href="#framework">Framework</a>
+        <a href="#deliverables">Deliverables</a>
+        <a href="#track-record">Track Record</a>
+        <a href="#about">About</a>
+        <a href="#contact" class="nav-cta">Get in Touch</a>
+      </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+      <h1>Technology due diligence for PE transactions.</h1>
+      <p class="hero__lead">
+        Quantified risk scoring, phased cost-to-fix estimates, and IC-ready value creation roadmaps. Delivered in 10&ndash;15 working days.
+      </p>
+      <div class="hero__offer">
+        Most technology DD tells an Investment Committee the architecture has technical debt. Ours tells them it&rsquo;s &pound;2.4M to remediate over 18 months with a 3.2x ROI.
+      </div>
+      <a href="#contact" class="btn">Schedule a Conversation &rarr;</a>
+    </section>
+
+    <!-- Framework -->
+    <section class="section section--alt" id="framework">
+      <h2>Assessment Framework</h2>
+      <p>Seven dimensions, each producing a standardised 1&ndash;5 score and a quantified financial estimate.</p>
+      <table class="scorecard">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Dimension</th>
+            <th>What we assess</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="dim-num">1</span></td>
+            <td>Architecture & Infrastructure</td>
+            <td>Cloud maturity, system topology, technical debt, scalability ceiling, SPOFs</td>
+          </tr>
+          <tr>
+            <td><span class="dim-num">2</span></td>
+            <td>Team & Organisation</td>
+            <td>Headcount, composition, key-person risk, outsourcing mix, hiring feasibility</td>
+          </tr>
+          <tr>
+            <td><span class="dim-num">3</span></td>
+            <td>Security & Compliance</td>
+            <td>OWASP exposure, SOC 2 readiness, GDPR/NIS2 posture, incident history</td>
+          </tr>
+          <tr>
+            <td><span class="dim-num">4</span></td>
+            <td>Data & Analytics</td>
+            <td>Quality, governance, integration health, AI readiness, master data</td>
+          </tr>
+          <tr>
+            <td><span class="dim-num">5</span></td>
+            <td>Cost Structure</td>
+            <td>Total spend analysis, cloud optimisation, licence audit, cost-to-fix estimate</td>
+          </tr>
+          <tr>
+            <td><span class="dim-num">6</span></td>
+            <td>Delivery Capability</td>
+            <td>DORA metrics, CI/CD maturity, QA practices, backlog health, velocity</td>
+          </tr>
+          <tr>
+            <td><span class="dim-num">7</span></td>
+            <td>Strategic Alignment</td>
+            <td>Roadmap fit, M&A integration readiness, competitive moat, innovation pipeline</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Deliverables -->
+    <section class="section" id="deliverables">
+      <h2>Deliverables</h2>
+      <p>Every engagement produces four artefacts, designed for direct use in IC materials.</p>
+
+      <div class="deliverables-stack">
+        <!-- Risk Scorecard -->
+        <div class="deliverable-card">
+          <div class="deliverable-card__header">
+            <strong>Risk Scorecard</strong>
+            <span class="deliverable-card__tag">Standardised &middot; Comparable across deals</span>
+          </div>
+          <div class="sample-scorecard">
+            <div class="sample-row">
+              <span class="sample-dim">Architecture</span>
+              <div class="sample-bar"><div class="sample-fill" style="width: 80%;"></div></div>
+              <span class="sample-score">4/5</span>
+            </div>
+            <div class="sample-row">
+              <span class="sample-dim">Team</span>
+              <div class="sample-bar"><div class="sample-fill" style="width: 60%;"></div></div>
+              <span class="sample-score">3/5</span>
+            </div>
+            <div class="sample-row sample-row--alert">
+              <span class="sample-dim">Security</span>
+              <div class="sample-bar"><div class="sample-fill sample-fill--alert" style="width: 40%;"></div></div>
+              <span class="sample-score">2/5</span>
+            </div>
+            <div class="sample-row">
+              <span class="sample-dim">Data</span>
+              <div class="sample-bar"><div class="sample-fill" style="width: 60%;"></div></div>
+              <span class="sample-score">3/5</span>
+            </div>
+            <div class="sample-row">
+              <span class="sample-dim">Cost</span>
+              <div class="sample-bar"><div class="sample-fill" style="width: 80%;"></div></div>
+              <span class="sample-score">4/5</span>
+            </div>
+            <div class="sample-row">
+              <span class="sample-dim">Delivery</span>
+              <div class="sample-bar"><div class="sample-fill" style="width: 100%;"></div></div>
+              <span class="sample-score">5/5</span>
+            </div>
+            <div class="sample-row">
+              <span class="sample-dim">Strategic</span>
+              <div class="sample-bar"><div class="sample-fill" style="width: 60%;"></div></div>
+              <span class="sample-score">3/5</span>
+            </div>
+            <div class="sample-row sample-row--composite">
+              <span class="sample-dim">Composite</span>
+              <div class="sample-bar"><div class="sample-fill" style="width: 69%;"></div></div>
+              <span class="sample-score">3.4/5</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cost-to-Fix -->
+        <div class="deliverable-card">
+          <div class="deliverable-card__header">
+            <strong>Cost-to-Fix Estimate</strong>
+            <span class="deliverable-card__tag">Quantified in GBP &middot; Phased &middot; Confidence intervals</span>
+          </div>
+          <table class="sample-table">
+            <thead>
+              <tr><th>Phase</th><th>Initiatives</th><th>Investment</th><th>Timeline</th><th>ROI</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>P1: Quick wins</td><td>3</td><td>&pound;280K</td><td>0&ndash;3 months</td><td>4.2x</td></tr>
+              <tr><td>P2: Foundation</td><td>4</td><td>&pound;1.1M</td><td>3&ndash;12 months</td><td>2.8x</td></tr>
+              <tr><td>P3: Optimisation</td><td>2</td><td>&pound;640K</td><td>12&ndash;24 months</td><td>3.5x</td></tr>
+              <tr class="sample-total"><td>Total</td><td>9</td><td>&pound;2.02M</td><td></td><td>3.2x</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Value Creation Roadmap -->
+        <div class="deliverable-card">
+          <div class="deliverable-card__header">
+            <strong>Value Creation Roadmap</strong>
+            <span class="deliverable-card__tag">90-day quick wins &middot; 12-month plan &middot; KPI targets</span>
+          </div>
+          <div class="sample-timeline">
+            <div class="timeline-phase">
+              <div class="timeline-label">Week 1&ndash;2</div>
+              <div class="timeline-content">Security hardening: patch critical CVEs, enable MFA, revoke dormant access</div>
+            </div>
+            <div class="timeline-phase">
+              <div class="timeline-label">Week 3&ndash;6</div>
+              <div class="timeline-content">Cloud cost reset: right-size instances, eliminate waste &mdash; est. &pound;180K annual savings</div>
+            </div>
+            <div class="timeline-phase">
+              <div class="timeline-label">Week 7&ndash;12</div>
+              <div class="timeline-content">Data consolidation: single reporting pipeline, deprecate 3 redundant systems</div>
+            </div>
+            <div class="timeline-phase">
+              <div class="timeline-label">Month 4&ndash;12</div>
+              <div class="timeline-content">Architecture migration, team restructure, delivery capability uplift</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Executive Summary -->
+        <div class="deliverable-card">
+          <div class="deliverable-card__header">
+            <strong>Executive Summary</strong>
+            <span class="deliverable-card__tag">2 pages &middot; IC-ready &middot; Go/no-go recommendation</span>
+          </div>
+          <div class="sample-summary">
+            <div class="summary-verdict summary-verdict--go">RECOMMENDATION: GO WITH CONDITIONS</div>
+            <p class="summary-text">Technology supports the investment thesis at current scale. Three material risks identified: (1) security posture requires &pound;280K immediate remediation, (2) key-person dependency on two senior engineers, (3) architecture scalability ceiling at ~3x current revenue. Total cost-to-fix: &pound;2.02M over 24 months. Recommended price adjustment: &pound;1.4M (net of quick-win savings).</p>
+          </div>
+        </div>
+      </div>
+
+      <a href="#contact" class="btn" style="margin-top: var(--sp-5);">Discuss Your Next Deal &rarr;</a>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section section--alt" id="testimonials">
+      <h2>What Clients Say</h2>
+      <div class="testimonials">
+        <blockquote class="testimonial">
+          <p>&ldquo;Pedro excels at executing highly technical projects, asking the right questions and inspiring the team with a deep sense of focus and purpose.&rdquo;</p>
+          <cite>Itamar Leizorek, CEO, Noxgen Biotech</cite>
+        </blockquote>
+        <blockquote class="testimonial">
+          <p>&ldquo;He has a remarkable ability to foresee industry trends and identify strategic opportunities that others may overlook.&rdquo;</p>
+          <cite>Jeronimo Mohar, Founder & CEO, Aleph RI</cite>
+        </blockquote>
+        <blockquote class="testimonial">
+          <p>&ldquo;An excellent track record of building and leading high-performance technical teams to develop and implement software and data solutions.&rdquo;</p>
+          <cite>Daniel Servitje, Co-Founder & CEO</cite>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- Track Record -->
+    <section class="section" id="track-record">
+      <h2>Track Record</h2>
+      <p>Built on 13 years of entering companies, assessing their technology, building the fix, and handing off to internal teams.</p>
+      <div class="stats-row">
+        <div class="stat">
+          <div class="stat__value">80+</div>
+          <div class="stat__label">Assessments</div>
+        </div>
+        <div class="stat">
+          <div class="stat__value">9</div>
+          <div class="stat__label">Industries</div>
+        </div>
+        <div class="stat">
+          <div class="stat__value">4</div>
+          <div class="stat__label">ERP implementations</div>
+        </div>
+        <div class="stat">
+          <div class="stat__value">$5M&ndash;$300M+</div>
+          <div class="stat__label">Portfolio revenue</div>
+        </div>
+      </div>
+      <div class="highlights">
+        <div class="highlight">
+          <span class="highlight__metric">+18% NOI</span>
+          <span class="highlight__desc">Technology-driven value creation at a 285-room resort &mdash; 14 initiatives assessed and delivered</span>
+        </div>
+        <div class="highlight">
+          <span class="highlight__metric">0 hrs unplanned downtime</span>
+          <span class="highlight__desc">Industrial PLC automation for water-treatment plant &mdash; critical infrastructure reliability</span>
+        </div>
+        <div class="highlight">
+          <span class="highlight__metric">5M+ items indexed</span>
+          <span class="highlight__desc">Production AI infrastructure &mdash; RAG pipelines, vector databases, LLM APIs</span>
+        </div>
+        <div class="highlight">
+          <span class="highlight__metric">&ndash;25% maintenance costs</span>
+          <span class="highlight__desc">IoT predictive maintenance &mdash; 90% of potential failures identified before occurrence</span>
+        </div>
+      </div>
+      <p style="margin-top: var(--sp-4);">
+        Full portfolio: <a href="https://velkan.io/case-studies/" target="_blank" rel="noopener">velkan.io/case-studies</a>
+      </p>
+    </section>
+
+    <!-- About -->
+    <section class="section section--alt" id="about">
+      <h2>About</h2>
+      <div class="about-grid">
+        <div>
+          <h3>The Practice</h3>
+          <p>Valepath provides structured technology due diligence for PE-backed transactions. Every assessment follows a standardised 7-dimension framework, producing quantified risk scores and financial estimates designed to be lifted directly into an IC memo. We work with mid-market PE firms on deals where technology is a material factor in the investment thesis.</p>
+        </div>
+        <div>
+          <h3>Pedro Rivera Torres Moir</h3>
+          <p>Founder &amp; Principal. B.S. Electrical &amp; Computer Engineering (CU Boulder), Advanced Project Management (Stanford). Previously: Founder &amp; CTO of Velkan (80+ technology transformations, 2012&ndash;2020), Co-Founder &amp; CEO of Waffle (AI platform, 5M+ items), Co-Founder of Abraxas (venture builder, $150M+ portfolio). EU, US, MX citizen. Based in Madrid, London-focused.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section" id="contact">
+      <h2>Get in Touch</h2>
+      <p>If you need technology risk quantified before a deal closes, or a value creation roadmap for a portfolio company.</p>
+      <div class="contact-row">
+        <a href="mailto:pedro@pedrortm.com" class="btn">Email Us</a>
+        <a href="https://linkedin.com/in/pedrortm" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://pedrortm.com" target="_blank" rel="noopener">pedrortm.com</a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <span>&copy; 2026 Valepath</span>
+      <span>London / Madrid</span>
+    </footer>
+
+  </div>
+</Base>
