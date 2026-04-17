@@ -1,38 +1,42 @@
-/* Valepath — Institutional report aesthetic */
-/* Light ground, ink text, oxblood accent, Lora + IBM Plex Sans */
+/* Valepath — Register B (Ink and Stone) */
+/* Dark ground, silver text, steel accent, Plus Jakarta Sans */
+/* Brand guide: github-repos/brand-assets/valepath/brand-guide.md */
 /* Design language: github-repos/design.md */
 
 :root {
-  /* Ground: warm stone/parchment */
-  --bg: #f5f1eb;
-  --bg-alt: #ece7df;
-  --bg-elevated: #e4ded5;
-  --bg-inset: #ddd7cd;
+  /* Ground: deep navy */
+  --bg: #0f172a;
+  --bg-alt: #1e293b;
+  --bg-elevated: #334155;
+  --bg-inset: #0c1322;
 
-  /* Ink */
-  --text: #1a1e2e;
-  --text-secondary: #3d4255;
-  --text-muted: #6b7280;
-  --text-dim: #9ca3af;
+  /* Text */
+  --text: #e2e8f0;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  --text-dim: #64748b;
 
-  /* Accent: Oxblood */
-  --accent: #8b4049;
-  --accent-light: rgba(139, 64, 73, 0.08);
-  --accent-mid: rgba(139, 64, 73, 0.15);
+  /* Accent: Steel */
+  --accent: #64748b;
+  --accent-light: rgba(100, 116, 139, 0.1);
+  --accent-mid: rgba(100, 116, 139, 0.2);
+  --accent-hover: #475569;
 
   /* Status */
-  --alert: #b45309;
-  --alert-light: rgba(180, 83, 9, 0.08);
-  --go: #166534;
-  --go-light: rgba(22, 101, 52, 0.08);
+  --alert: #f59e0b;
+  --alert-light: rgba(245, 158, 11, 0.1);
+  --go: #22c55e;
+  --go-light: rgba(34, 197, 94, 0.1);
+  --risk: #ef4444;
+  --risk-light: rgba(239, 68, 68, 0.1);
 
   /* Borders */
-  --border: rgba(26, 30, 46, 0.1);
-  --border-strong: rgba(26, 30, 46, 0.2);
+  --border: rgba(226, 232, 240, 0.08);
+  --border-strong: rgba(226, 232, 240, 0.15);
 
-  /* Typography — Lora + IBM Plex Sans */
-  --font-serif: 'Lora', Georgia, serif;
-  --font-body: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+  /* Typography — Plus Jakarta Sans only */
+  --font-display: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
 
   /* Scale */
   --text-xs: 0.75rem;
@@ -88,8 +92,8 @@ body {
 
 /* === Typography === */
 h1, h2, h3 {
-  font-family: var(--font-serif);
-  font-weight: 400;
+  font-family: var(--font-display);
+  font-weight: 600;
   color: var(--text);
 }
 
@@ -104,14 +108,14 @@ h2 {
   font-size: var(--text-xl);
   margin-bottom: var(--sp-3);
   padding-bottom: var(--sp-2);
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--border-strong);
 }
 
 h3 {
   font-family: var(--font-body);
   font-size: var(--text-sm);
   font-weight: 600;
-  color: var(--text-secondary);
+  color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   margin-bottom: var(--sp-2);
@@ -124,16 +128,16 @@ p {
 }
 
 a { color: var(--accent); text-decoration: none; }
-a:hover { text-decoration: underline; }
+a:hover { color: var(--text-muted); text-decoration: underline; }
 
 /* === Buttons === */
 .btn {
   display: inline-block;
   padding: var(--sp-2) var(--sp-4);
   background: var(--accent);
-  color: #fff;
+  color: var(--bg);
   font-size: var(--text-sm);
-  font-weight: 500;
+  font-weight: 600;
   border-radius: 3px;
   transition: background 0.2s ease-out;
   text-decoration: none;
@@ -141,7 +145,8 @@ a:hover { text-decoration: underline; }
 }
 
 .btn:hover {
-  background: #a04d57;
+  background: var(--accent-hover);
+  color: var(--text);
   text-decoration: none;
 }
 
@@ -151,7 +156,7 @@ a:hover { text-decoration: underline; }
   justify-content: space-between;
   align-items: center;
   padding: var(--sp-4) 0;
-  border-bottom: 2px solid var(--text);
+  border-bottom: 1.5px solid var(--accent);
   position: sticky;
   top: 0;
   background: var(--bg);
@@ -159,10 +164,11 @@ a:hover { text-decoration: underline; }
 }
 
 .header__brand {
-  font-family: var(--font-serif);
+  font-family: var(--font-display);
   font-size: var(--text-2xl);
+  font-weight: 600;
   color: var(--text);
-  letter-spacing: -0.02em;
+  letter-spacing: 0.04em;
 }
 
 .header__nav {
@@ -173,7 +179,7 @@ a:hover { text-decoration: underline; }
 }
 
 .header__nav a {
-  color: var(--text-muted);
+  color: var(--text-dim);
   font-weight: 500;
 }
 
@@ -182,14 +188,14 @@ a:hover { text-decoration: underline; }
 .nav-cta {
   padding: var(--sp-1) var(--sp-3);
   background: var(--accent);
-  color: #fff !important;
+  color: var(--bg) !important;
   border-radius: 3px;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .nav-cta:hover {
-  background: #a04d57;
-  color: #fff !important;
+  background: var(--accent-hover);
+  color: var(--text) !important;
 }
 
 /* === Hero === */
@@ -200,8 +206,9 @@ a:hover { text-decoration: underline; }
 .hero h1 { max-width: none; }
 
 .hero__lead {
-  font-family: var(--font-serif);
+  font-family: var(--font-display);
   font-size: var(--text-lg);
+  font-weight: 400;
   color: var(--text-secondary);
   max-width: none;
   line-height: 1.4;
@@ -232,7 +239,7 @@ a:hover { text-decoration: underline; }
   font-size: var(--text-xs);
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: var(--text-muted);
+  color: var(--text-dim);
   padding: var(--sp-2) var(--sp-3);
   border-bottom: 2px solid var(--border-strong);
 }
@@ -268,7 +275,7 @@ a:hover { text-decoration: underline; }
 }
 
 .deliverable-card {
-  border: 1px solid var(--border);
+  border: 1px solid var(--border-strong);
   border-radius: 4px;
   overflow: hidden;
 }
@@ -342,7 +349,7 @@ a:hover { text-decoration: underline; }
 
 .sample-row--composite {
   padding-top: var(--sp-2);
-  border-top: 1px solid var(--border);
+  border-top: 1px solid var(--border-strong);
   margin-top: var(--sp-1);
 }
 
@@ -372,7 +379,7 @@ a:hover { text-decoration: underline; }
   letter-spacing: 0.04em;
   color: var(--text-dim);
   padding: var(--sp-2) var(--sp-4);
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--border-strong);
 }
 
 .sample-table td {
@@ -465,7 +472,7 @@ a:hover { text-decoration: underline; }
 }
 
 .testimonial p {
-  font-family: var(--font-serif);
+  font-family: var(--font-display);
   font-size: var(--text-base);
   font-style: italic;
   color: var(--text-secondary);
@@ -490,15 +497,16 @@ a:hover { text-decoration: underline; }
 }
 
 .stat__value {
-  font-family: var(--font-serif);
+  font-family: var(--font-display);
   font-size: var(--text-2xl);
+  font-weight: 600;
   color: var(--text);
   line-height: 1;
 }
 
 .stat__label {
   font-size: var(--text-xs);
-  color: var(--text-muted);
+  color: var(--text-dim);
   text-transform: uppercase;
   letter-spacing: 0.06em;
   margin-top: var(--sp-1);
