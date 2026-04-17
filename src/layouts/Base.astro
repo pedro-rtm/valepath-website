@@ -1,0 +1,41 @@
+---
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/src/styles/main.css" />
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Valepath",
+    "description": "Technology due diligence for PE-backed transactions. Structured 7-dimension assessment framework with quantified risk scoring and value creation roadmaps.",
+    "founder": {
+      "@type": "Person",
+      "name": "Pedro Rivera Torres Moir",
+      "jobTitle": "Founder & Principal",
+      "url": "https://pedrortm.com",
+      "sameAs": ["https://linkedin.com/in/pedrortm"]
+    },
+    "areaServed": ["United Kingdom", "Europe"],
+    "serviceType": "Technology Due Diligence"
+  })} />
+</head>
+<body>
+  <slot />
+</body>
+</html>
