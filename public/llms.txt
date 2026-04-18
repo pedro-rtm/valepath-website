@@ -1,0 +1,38 @@
+# Valepath
+
+## About
+Valepath provides structured technology due diligence for PE-backed transactions. Every engagement follows a standardised 8-dimension framework producing peer-benchmarked risk scores, phased cost-to-fix estimates (GBP, 0–3 / 3–12 / 12–24 months), a first 100 days operational plan, and deal-structuring implications designed to be lifted directly into an IC memo. Delivered in 10–15 working days. Founded by Pedro Rivera Torres Moir. London-focused.
+
+## The 8-Dimension Framework
+1. Architecture & Infrastructure — cloud maturity, technical debt, scalability, SPOFs
+2. Team & Organisation — composition, key-person risk, hiring feasibility, culture
+3. Security & Compliance — OWASP, SOC 2, GDPR/NIS2, incident history, IAM
+4. Data & Analytics — quality, governance, integration, privacy
+5. AI & Proprietary Technology — models, IP portfolio, training-data governance, EU AI Act exposure, moat durability
+6. Cost Structure — spend analysis, optimisation, benchmarking, cost-to-fix
+7. Delivery Capability — DORA metrics, AI engineering leverage, backlog, practices
+8. Strategic Alignment & Bolt-on Readiness — roadmap fit, multi-tenancy, integration readiness, exit attractiveness
+
+## Pages
+- / — Landing page: 8-dimension framework, deliverables, track record, about, contact
+- /sample-dd-report.pdf — Illustrative sample DD report (fictional LegalTech target)
+
+## Deliverables per engagement
+- Executive summary (2 pages, IC-ready)
+- First 100 days operational plan (detachable, standalone for deal team)
+- 8 dimension assessments with peer-benchmarked 1–5 scoring
+- Risk scorecard (composite vs peer median)
+- Cost-to-fix estimate (phased, GBP)
+- Deal structuring implications (price adjustment, escrow milestones, reps & warranties, earnout, retention)
+
+## Target clients
+UK and European mid-market private equity firms. Portfolio company revenue range $30M–$400M. Deals where technology is a material factor in the investment thesis.
+
+## Links
+- Website: https://valepath.com
+- Founder personal site: https://pedrortm.com
+- Founder LinkedIn: https://linkedin.com/in/pedrortm
+- Sample report: https://valepath.com/sample-dd-report.pdf
+
+## Contact
+London. Contact via website.
