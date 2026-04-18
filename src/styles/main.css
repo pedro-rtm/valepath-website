@@ -150,6 +150,65 @@ a:hover { color: var(--text-muted); text-decoration: underline; }
   text-decoration: none;
 }
 
+.btn--secondary {
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+}
+
+.btn--secondary:hover {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+.hero__ctas {
+  display: flex;
+  gap: var(--sp-3);
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.deliverable-card--download {
+  background: rgba(100, 116, 139, 0.06);
+}
+
+.deliverable-card--download .deliverable-card__body {
+  padding: var(--sp-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  align-items: flex-start;
+}
+
+.deliverable-card--download .deliverable-card__body p {
+  margin: 0;
+}
+
+.deliverable-card--download .deliverable-card__body .btn {
+  margin-top: var(--sp-2);
+}
+
+/* Copy-email button state swap */
+.copy-email {
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+  position: relative;
+}
+.copy-email__done {
+  display: none;
+}
+.copy-email.is-copied {
+  background: var(--success, #22c55e);
+}
+.copy-email.is-copied .copy-email__default {
+  display: none;
+}
+.copy-email.is-copied .copy-email__done {
+  display: inline;
+}
+
+
 /* === Header === */
 .header {
   display: flex;
