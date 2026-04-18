@@ -11,7 +11,18 @@ import Base from '../layouts/Base.astro';
     <!-- Header -->
     <header class="header">
       <div class="header__brand">Valepath</div>
-      <nav class="header__nav">
+      <button
+        type="button"
+        class="nav-toggle"
+        aria-label="Toggle navigation menu"
+        aria-expanded="false"
+        aria-controls="primary-nav"
+      >
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+      </button>
+      <nav class="header__nav" id="primary-nav">
         <a href="#framework">Framework</a>
         <a href="#deliverables">Deliverables</a>
         <a href="#track-record">Track Record</a>
@@ -19,6 +30,24 @@ import Base from '../layouts/Base.astro';
         <a href="#contact" class="nav-cta">Get in Touch</a>
       </nav>
     </header>
+    <script is:inline>
+      (() => {
+        const toggle = document.querySelector('.nav-toggle');
+        const nav = document.getElementById('primary-nav');
+        if (!toggle || !nav) return;
+        const close = () => {
+          toggle.setAttribute('aria-expanded', 'false');
+          nav.classList.remove('is-open');
+        };
+        toggle.addEventListener('click', () => {
+          const open = toggle.getAttribute('aria-expanded') === 'true';
+          toggle.setAttribute('aria-expanded', String(!open));
+          nav.classList.toggle('is-open', !open);
+        });
+        nav.querySelectorAll('a').forEach((a) => a.addEventListener('click', close));
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+      })();
+    </script>
 
     <!-- Hero -->
     <section class="hero">
@@ -325,8 +354,14 @@ import Base from '../layouts/Base.astro';
       <h2>Get in Touch</h2>
       <p>If you need technology risk quantified before a deal closes, or a value creation roadmap for a portfolio company.</p>
       <div class="contact-row">
-        <button type="button" class="btn copy-email" data-email="pedro@valepath.com" aria-label="Copy email address pedro@valepath.com">
-          <span class="copy-email__default">Email Us &mdash; pedro@valepath.com</span>
+        <button
+          type="button"
+          class="btn copy-email"
+          data-u="pedro"
+          data-d="valepath.com"
+          aria-label="Copy contact email to clipboard"
+        >
+          <span class="copy-email__default">Copy Contact Email</span>
           <span class="copy-email__done" aria-hidden="true">Copied &check;</span>
         </button>
         <a href="https://linkedin.com/in/pedrortm" target="_blank" rel="noopener">LinkedIn</a>
@@ -335,11 +370,10 @@ import Base from '../layouts/Base.astro';
       <script is:inline>
         document.querySelectorAll('.copy-email').forEach((btn) => {
           btn.addEventListener('click', async () => {
-            const email = btn.getAttribute('data-email');
+            const email = `${btn.dataset.u}\u0040${btn.dataset.d}`;
             try {
               await navigator.clipboard.writeText(email);
             } catch (err) {
-              // Fallback for older browsers
               const ta = document.createElement('textarea');
               ta.value = email;
               ta.setAttribute('readonly', '');
@@ -359,8 +393,16 @@ import Base from '../layouts/Base.astro';
 
     <!-- Footer -->
     <footer>
-      <span>&copy; 2026 Valepath</span>
-      <span>London</span>
+      <div class="footer__col">
+        <span>&copy; 2026 Valepath</span>
+        <span class="footer__sep">&middot;</span>
+        <span>London</span>
+      </div>
+      <div class="footer__col">
+        <a href="#framework">Framework</a>
+        <a href="/sample-dd-report.pdf" download>Sample Report</a>
+        <a href="#contact">Contact</a>
+      </div>
     </footer>
 
   </div>
