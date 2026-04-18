@@ -29,13 +29,16 @@ import Base from '../layouts/Base.astro';
       <div class="hero__offer">
         Most technology DD tells an Investment Committee the architecture has technical debt. Ours tells them it&rsquo;s &pound;2.4M to remediate over 18 months with a 3.2x ROI.
       </div>
-      <a href="#contact" class="btn">Schedule a Conversation &rarr;</a>
+      <div class="hero__ctas">
+        <a href="#contact" class="btn">Schedule a Conversation &rarr;</a>
+        <a href="/sample-dd-report.pdf" class="btn btn--secondary" download>Download Sample Report &darr;</a>
+      </div>
     </section>
 
     <!-- Framework -->
     <section class="section section--alt" id="framework">
       <h2>Assessment Framework</h2>
-      <p>Seven dimensions, each producing a standardised 1&ndash;5 score and a quantified financial estimate.</p>
+      <p>Eight dimensions, each producing a standardised 1&ndash;5 score against peer benchmarks and a quantified financial estimate.</p>
       <table class="scorecard">
         <thead>
           <tr>
@@ -63,22 +66,27 @@ import Base from '../layouts/Base.astro';
           <tr>
             <td><span class="dim-num">4</span></td>
             <td>Data & Analytics</td>
-            <td>Quality, governance, integration health, AI readiness, master data</td>
+            <td>Quality, governance, integration health, privacy, master data</td>
           </tr>
           <tr>
             <td><span class="dim-num">5</span></td>
+            <td>AI & Proprietary Technology</td>
+            <td>Model portfolio, IP governance, training-data provenance, EU AI Act exposure, moat durability</td>
+          </tr>
+          <tr>
+            <td><span class="dim-num">6</span></td>
             <td>Cost Structure</td>
             <td>Total spend analysis, cloud optimisation, licence audit, cost-to-fix estimate</td>
           </tr>
           <tr>
-            <td><span class="dim-num">6</span></td>
+            <td><span class="dim-num">7</span></td>
             <td>Delivery Capability</td>
-            <td>DORA metrics, CI/CD maturity, QA practices, backlog health, velocity</td>
+            <td>DORA metrics, CI/CD maturity, QA practices, AI engineering leverage, backlog health</td>
           </tr>
           <tr>
-            <td><span class="dim-num">7</span></td>
-            <td>Strategic Alignment</td>
-            <td>Roadmap fit, M&A integration readiness, competitive moat, innovation pipeline</td>
+            <td><span class="dim-num">8</span></td>
+            <td>Strategic Alignment & Bolt-on Readiness</td>
+            <td>Roadmap fit, multi-tenancy & integration readiness, competitive moat, exit attractiveness</td>
           </tr>
         </tbody>
       </table>
@@ -87,7 +95,7 @@ import Base from '../layouts/Base.astro';
     <!-- Deliverables -->
     <section class="section" id="deliverables">
       <h2>Deliverables</h2>
-      <p>Every engagement produces four artefacts, designed for direct use in IC materials.</p>
+      <p>Every engagement produces six artefacts, designed for direct use in IC materials and for the deal team post-close.</p>
 
       <div class="deliverables-stack">
         <!-- Risk Scorecard -->
@@ -114,28 +122,33 @@ import Base from '../layouts/Base.astro';
             </div>
             <div class="sample-row">
               <span class="sample-dim">Data</span>
+              <div class="sample-bar"><div class="sample-fill" style="width: 80%;"></div></div>
+              <span class="sample-score">4/5</span>
+            </div>
+            <div class="sample-row">
+              <span class="sample-dim">AI & Proprietary</span>
               <div class="sample-bar"><div class="sample-fill" style="width: 60%;"></div></div>
               <span class="sample-score">3/5</span>
             </div>
             <div class="sample-row">
               <span class="sample-dim">Cost</span>
+              <div class="sample-bar"><div class="sample-fill" style="width: 60%;"></div></div>
+              <span class="sample-score">3/5</span>
+            </div>
+            <div class="sample-row">
+              <span class="sample-dim">Delivery</span>
               <div class="sample-bar"><div class="sample-fill" style="width: 80%;"></div></div>
               <span class="sample-score">4/5</span>
             </div>
             <div class="sample-row">
-              <span class="sample-dim">Delivery</span>
-              <div class="sample-bar"><div class="sample-fill" style="width: 100%;"></div></div>
-              <span class="sample-score">5/5</span>
-            </div>
-            <div class="sample-row">
-              <span class="sample-dim">Strategic</span>
+              <span class="sample-dim">Strategic & Bolt-on</span>
               <div class="sample-bar"><div class="sample-fill" style="width: 60%;"></div></div>
               <span class="sample-score">3/5</span>
             </div>
             <div class="sample-row sample-row--composite">
               <span class="sample-dim">Composite</span>
-              <div class="sample-bar"><div class="sample-fill" style="width: 69%;"></div></div>
-              <span class="sample-score">3.4/5</span>
+              <div class="sample-bar"><div class="sample-fill" style="width: 65%;"></div></div>
+              <span class="sample-score">3.25/5</span>
             </div>
           </div>
         </div>
@@ -151,37 +164,24 @@ import Base from '../layouts/Base.astro';
               <tr><th>Phase</th><th>Initiatives</th><th>Investment</th><th>Timeline</th><th>ROI</th></tr>
             </thead>
             <tbody>
-              <tr><td>P1: Quick wins</td><td>3</td><td>&pound;280K</td><td>0&ndash;3 months</td><td>4.2x</td></tr>
-              <tr><td>P2: Foundation</td><td>4</td><td>&pound;1.1M</td><td>3&ndash;12 months</td><td>2.8x</td></tr>
-              <tr><td>P3: Optimisation</td><td>2</td><td>&pound;640K</td><td>12&ndash;24 months</td><td>3.5x</td></tr>
-              <tr class="sample-total"><td>Total</td><td>9</td><td>&pound;2.02M</td><td></td><td>3.2x</td></tr>
+              <tr><td>P1: Quick wins</td><td>5</td><td>&pound;320K</td><td>0&ndash;3 months</td><td>Protects &pound;3.1M ARR</td></tr>
+              <tr><td>P2: Foundation</td><td>6</td><td>&pound;1.20M</td><td>3&ndash;12 months</td><td>Unlocks bolt-on thesis</td></tr>
+              <tr><td>P3: Optimisation</td><td>3</td><td>&pound;580K</td><td>12&ndash;24 months</td><td>Platform-grade profile</td></tr>
+              <tr class="sample-total"><td>Total</td><td>12</td><td>&pound;2.10M</td><td></td><td>~&pound;11M value protected / unlocked</td></tr>
             </tbody>
           </table>
         </div>
 
-        <!-- Value Creation Roadmap -->
-        <div class="deliverable-card">
+        <!-- Full DD Report -->
+        <div class="deliverable-card deliverable-card--download">
           <div class="deliverable-card__header">
-            <strong>Value Creation Roadmap</strong>
-            <span class="deliverable-card__tag">90-day quick wins &middot; 12-month plan &middot; KPI targets</span>
+            <strong>Full Due Diligence Report</strong>
+            <span class="deliverable-card__tag">14 sections &middot; 8 dimensions &middot; IC-ready PDF</span>
           </div>
-          <div class="sample-timeline">
-            <div class="timeline-phase">
-              <div class="timeline-label">Week 1&ndash;2</div>
-              <div class="timeline-content">Security hardening: patch critical CVEs, enable MFA, revoke dormant access</div>
-            </div>
-            <div class="timeline-phase">
-              <div class="timeline-label">Week 3&ndash;6</div>
-              <div class="timeline-content">Cloud cost reset: right-size instances, eliminate waste &mdash; est. &pound;180K annual savings</div>
-            </div>
-            <div class="timeline-phase">
-              <div class="timeline-label">Week 7&ndash;12</div>
-              <div class="timeline-content">Data consolidation: single reporting pipeline, deprecate 3 redundant systems</div>
-            </div>
-            <div class="timeline-phase">
-              <div class="timeline-label">Month 4&ndash;12</div>
-              <div class="timeline-content">Architecture migration, team restructure, delivery capability uplift</div>
-            </div>
+          <div class="deliverable-card__body">
+            <p>The complete deliverable: executive summary, 100-day plan, eight dimension assessments with peer-benchmarked scoring, risk scorecard, phased cost-to-fix, and deal structuring implications.</p>
+            <p>Review an illustrative sample prepared for a fictional London mid-market LegalTech target.</p>
+            <a href="/sample-dd-report.pdf" class="btn" download>Download Sample Report (PDF) &darr;</a>
           </div>
         </div>
 
@@ -193,8 +193,48 @@ import Base from '../layouts/Base.astro';
           </div>
           <div class="sample-summary">
             <div class="summary-verdict summary-verdict--go">RECOMMENDATION: GO WITH CONDITIONS</div>
-            <p class="summary-text">Technology supports the investment thesis at current scale. Three material risks identified: (1) security posture requires &pound;280K immediate remediation, (2) key-person dependency on two senior engineers, (3) architecture scalability ceiling at ~3x current revenue. Total cost-to-fix: &pound;2.02M over 24 months. Recommended price adjustment: &pound;1.4M (net of quick-win savings).</p>
+            <p class="summary-text">Technology is a net enabler of the platform thesis, with a credible AI moat (18&ndash;24 month lead). Three material issues: (1) no SOC 2 Type II &mdash; 14% of ARR at contractual risk, (2) AI model training-data provenance undocumented &mdash; potential IP contamination, (3) multi-tenancy hard-coded &mdash; blocks efficient bolt-on integration. Total cost-to-fix: &pound;2.10M over 24 months. Recommended price adjustment: &minus;&pound;3.0M with &pound;1.5M escrow milestone-released over 18 months.</p>
           </div>
+        </div>
+
+        <!-- First 100 Days Plan -->
+        <div class="deliverable-card">
+          <div class="deliverable-card__header">
+            <strong>First 100 Days &mdash; Operational Plan</strong>
+            <span class="deliverable-card__tag">Week-by-week &middot; Owner-assigned &middot; KPI baselines</span>
+          </div>
+          <table class="sample-table">
+            <thead>
+              <tr><th>Window</th><th>Workstream</th><th>Outcome</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Days 1&ndash;14</td><td>Security</td><td>SOC 2 readiness assessment; pentest scheduled</td></tr>
+              <tr><td>Days 14&ndash;30</td><td>Cost</td><td>Cloud and licence audit &mdash; &pound;200K+ savings identified</td></tr>
+              <tr><td>Days 30&ndash;60</td><td>Compliance</td><td>GDPR / DSR automation deployed; DACH retention secured</td></tr>
+              <tr><td>Days 60&ndash;90</td><td>Architecture</td><td>Bolt-on integration refactor scoped and costed</td></tr>
+              <tr><td>Days 90&ndash;100</td><td>Governance</td><td>Tech steering committee; KPI dashboard live</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Deal Structuring Implications -->
+        <div class="deliverable-card">
+          <div class="deliverable-card__header">
+            <strong>Deal Structuring Implications</strong>
+            <span class="deliverable-card__tag">SPA-ready reps &middot; Escrow milestones &middot; Price adjustment</span>
+          </div>
+          <table class="sample-table">
+            <thead>
+              <tr><th>Lever</th><th>Recommendation</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Price adjustment</td><td>&minus;&pound;3.0M from ask &mdash; itemised against ARR-at-risk and certain remediation</td></tr>
+              <tr><td>Escrow</td><td>&pound;1.5M / 18 months, milestone-released against SOC 2 and AI provenance audit</td></tr>
+              <tr><td>Reps & warranties</td><td>Enhanced: IP / training-data provenance, cybersecurity, AI regulatory compliance</td></tr>
+              <tr><td>Earnout</td><td>&pound;4.0M cap tied to ARR growth, DACH segment, AI tier adoption</td></tr>
+              <tr><td>Management retention</td><td>Founder-CTO lockup + knowledge-transfer milestones; AI team pool</td></tr>
+            </tbody>
+          </table>
         </div>
       </div>
 
@@ -271,11 +311,11 @@ import Base from '../layouts/Base.astro';
       <div class="about-grid">
         <div>
           <h3>The Practice</h3>
-          <p>Valepath provides structured technology due diligence for PE-backed transactions. Every assessment follows a standardised 7-dimension framework, producing quantified risk scores and financial estimates designed to be lifted directly into an IC memo. We work with mid-market PE firms on deals where technology is a material factor in the investment thesis.</p>
+          <p>Valepath provides structured technology due diligence for PE-backed transactions. Every assessment follows a standardised 8-dimension framework &mdash; including a distinct AI &amp; proprietary technology assessment and bolt-on integration readiness &mdash; producing peer-benchmarked risk scores and financial estimates designed to be lifted directly into an IC memo. We work with mid-market PE firms on deals where technology is a material factor in the investment thesis.</p>
         </div>
         <div>
           <h3>Pedro Rivera Torres Moir</h3>
-          <p>Founder &amp; Principal. B.S. Electrical &amp; Computer Engineering (CU Boulder), Advanced Project Management (Stanford). Previously: Founder &amp; CTO of Velkan (80+ technology transformations, 2012&ndash;2020), Co-Founder &amp; CEO of Waffle (AI platform, 5M+ items), Co-Founder of Abraxas (venture builder, $150M+ portfolio). EU, US, MX citizen. Based in Madrid, London-focused.</p>
+          <p>Founder &amp; Principal. B.S. Electrical &amp; Computer Engineering (CU Boulder), Advanced Project Management (Stanford). Previously: Founder &amp; CTO of Velkan (80+ technology transformations, 2012&ndash;2020), Co-Founder &amp; CEO of Waffle (AI platform, 5M+ items), Co-Founder of Abraxas (venture builder, $150M+ portfolio). EU, US, MX citizen. London-focused.</p>
         </div>
       </div>
     </section>
@@ -285,16 +325,42 @@ import Base from '../layouts/Base.astro';
       <h2>Get in Touch</h2>
       <p>If you need technology risk quantified before a deal closes, or a value creation roadmap for a portfolio company.</p>
       <div class="contact-row">
-        <a href="mailto:pedro@pedrortm.com" class="btn">Email Us</a>
+        <button type="button" class="btn copy-email" data-email="pedro@valepath.com" aria-label="Copy email address pedro@valepath.com">
+          <span class="copy-email__default">Email Us &mdash; pedro@valepath.com</span>
+          <span class="copy-email__done" aria-hidden="true">Copied &check;</span>
+        </button>
         <a href="https://linkedin.com/in/pedrortm" target="_blank" rel="noopener">LinkedIn</a>
         <a href="https://pedrortm.com" target="_blank" rel="noopener">pedrortm.com</a>
       </div>
+      <script is:inline>
+        document.querySelectorAll('.copy-email').forEach((btn) => {
+          btn.addEventListener('click', async () => {
+            const email = btn.getAttribute('data-email');
+            try {
+              await navigator.clipboard.writeText(email);
+            } catch (err) {
+              // Fallback for older browsers
+              const ta = document.createElement('textarea');
+              ta.value = email;
+              ta.setAttribute('readonly', '');
+              ta.style.position = 'absolute';
+              ta.style.left = '-9999px';
+              document.body.appendChild(ta);
+              ta.select();
+              document.execCommand('copy');
+              document.body.removeChild(ta);
+            }
+            btn.classList.add('is-copied');
+            setTimeout(() => btn.classList.remove('is-copied'), 1800);
+          });
+        });
+      </script>
     </section>
 
     <!-- Footer -->
     <footer>
       <span>&copy; 2026 Valepath</span>
-      <span>London / Madrid</span>
+      <span>London</span>
     </footer>
 
   </div>
