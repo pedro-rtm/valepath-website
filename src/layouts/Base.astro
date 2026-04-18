@@ -7,6 +7,8 @@ interface Props {
 }
 
 const { title, description } = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const ogImageURL = new URL('/og-image.png', Astro.site).href;
 ---
 
 <!DOCTYPE html>
@@ -16,9 +18,11 @@ const { title, description } = Astro.props;
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{title}</title>
   <meta name="description" content={description} />
+  <link rel="canonical" href={canonicalURL} />
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
   <meta name="theme-color" content="#0f172a" />
 
@@ -26,38 +30,84 @@ const { title, description } = Astro.props;
   <meta property="og:type" content="website" />
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
-  <meta property="og:image" content="https://valepath.com/og-image.png" />
-  <meta property="og:url" content="https://valepath.com" />
+  <meta property="og:image" content={ogImageURL} />
+  <meta property="og:url" content={canonicalURL} />
   <meta property="og:site_name" content="Valepath" />
+  <meta property="og:locale" content="en_GB" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={description} />
-  <meta name="twitter:image" content="https://valepath.com/og-image.png" />
-
-  <!-- Canonical -->
-  <link rel="canonical" href="https://valepath.com" />
+  <meta name="twitter:image" content={ogImageURL} />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
 
+  <!-- JSON-LD: Organization -->
   <script type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "Valepath",
+    "url": "https://valepath.com",
     "description": "Technology due diligence for PE-backed transactions. Structured 8-dimension assessment framework with peer-benchmarked risk scoring, cost-to-fix estimates, a first 100 days operational plan, and deal-structuring implications.",
+    "logo": "https://valepath.com/og-image.png",
     "founder": {
       "@type": "Person",
       "name": "Pedro Rivera Torres Moir",
       "jobTitle": "Founder & Principal",
       "url": "https://pedrortm.com",
-      "sameAs": ["https://linkedin.com/in/pedrortm"]
+      "sameAs": [
+        "https://linkedin.com/in/pedrortm",
+        "https://pedrortm.com"
+      ]
     },
-    "areaServed": ["United Kingdom", "Europe"],
-    "serviceType": "Technology Due Diligence"
+    "areaServed": {
+      "@type": "AdministrativeArea",
+      "name": "Europe"
+    },
+    "serviceType": "Technology Due Diligence",
+    "knowsAbout": [
+      "technology due diligence",
+      "PE value creation",
+      "technical risk assessment",
+      "AI assessment",
+      "IP portfolio evaluation",
+      "SOC 2 readiness",
+      "GDPR compliance",
+      "EU AI Act",
+      "cloud cost optimisation",
+      "bolt-on integration readiness"
+    ],
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "London",
+      "addressCountry": "GB"
+    },
+    "sameAs": [
+      "https://linkedin.com/in/pedrortm",
+      "https://pedrortm.com"
+    ]
+  })} />
+
+  <!-- JSON-LD: Person (founder) -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Pedro Rivera Torres Moir",
+    "url": "https://pedrortm.com",
+    "jobTitle": "Founder & Principal",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Valepath",
+      "url": "https://valepath.com"
+    },
+    "sameAs": [
+      "https://linkedin.com/in/pedrortm",
+      "https://pedrortm.com"
+    ]
   })} />
 </head>
 <body>
