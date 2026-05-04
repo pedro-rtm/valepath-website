@@ -193,18 +193,34 @@ a:hover { color: var(--text-muted); text-decoration: underline; }
   margin-top: var(--sp-2);
 }
 
-/* Copy-email button state swap */
+/* Copy-email button: ghost button, accent-tinted on copy. Brand-coherent — no green. */
 .copy-email {
   cursor: pointer;
-  border: none;
+  border: 1px solid var(--border-strong);
+  background: transparent;
+  color: var(--text-muted);
   font-family: inherit;
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: var(--sp-2) var(--sp-3);
+  border-radius: 3px;
   position: relative;
+  transition: border-color 0.15s ease-out, color 0.15s ease-out, background 0.15s ease-out;
+}
+.copy-email:hover {
+  border-color: var(--accent);
+  color: var(--text);
 }
 .copy-email__done {
   display: none;
+  color: var(--accent);
 }
 .copy-email.is-copied {
-  background: var(--success, #22c55e);
+  border-color: var(--accent);
+  background: var(--accent-light);
+  color: var(--text);
 }
 .copy-email.is-copied .copy-email__default {
   display: none;
@@ -685,6 +701,179 @@ footer a {
 }
 footer a:hover { color: var(--text); }
 
+/* === Engagements (When + Tiers) === */
+.when-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: var(--sp-3);
+  margin: var(--sp-3) 0 var(--sp-6);
+}
+
+.when-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  padding: var(--sp-3) var(--sp-4);
+  background: var(--accent-light);
+  border-left: 2px solid var(--accent);
+}
+
+.when-stage {
+  font-family: var(--font-display);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.when-trigger {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.tiers-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-3);
+  margin: var(--sp-3) 0 var(--sp-3);
+  align-items: stretch;
+}
+
+.tier-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border-strong);
+  border-radius: 4px;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+.tier-card--feature {
+  border-color: var(--accent);
+  background: rgba(100, 116, 139, 0.06);
+  box-shadow: 0 0 0 1px var(--accent);
+}
+
+.tier-card__header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-1);
+  padding: var(--sp-3) var(--sp-4);
+  background: var(--bg-alt);
+  border-bottom: 1px solid var(--border);
+}
+
+.tier-card--feature .tier-card__header {
+  background: var(--accent-mid);
+}
+
+.tier-card__header strong {
+  font-size: var(--text-base);
+  color: var(--text);
+  letter-spacing: -0.005em;
+}
+
+.tier-card__badge {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  margin-bottom: var(--sp-1);
+}
+
+.tier-card--feature .tier-card__badge {
+  color: var(--text);
+}
+
+.tier-card__price {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--accent);
+  margin-top: var(--sp-1);
+}
+
+.tier-card--feature .tier-card__price {
+  color: var(--text);
+}
+
+.tier-card__meta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-1);
+  padding: var(--sp-3) var(--sp-4);
+  font-size: var(--text-xs);
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border-bottom: 1px solid var(--border);
+}
+
+.tier-card__list {
+  list-style: none;
+  padding: var(--sp-3) var(--sp-4);
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  flex: 1;
+}
+
+.tier-card__list li {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: 1.5;
+  padding-left: var(--sp-3);
+  position: relative;
+}
+
+.tier-card__list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  width: 6px;
+  height: 1px;
+  background: var(--accent);
+}
+
+.tier-note {
+  font-size: var(--text-xs);
+  color: var(--text-dim);
+  font-style: italic;
+  margin-top: var(--sp-2);
+}
+
+/* === Visible email in Contact === */
+.contact-block {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  margin-top: var(--sp-4);
+  flex-wrap: wrap;
+}
+
+.contact-email {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  border-bottom: 1px solid var(--accent);
+  padding-bottom: 2px;
+  transition: color 0.15s ease-out, border-color 0.15s ease-out;
+}
+
+.contact-email:hover {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom-color: var(--text);
+}
+
 /* === Responsive === */
 @media (max-width: 700px) {
   h1 { font-size: var(--text-2xl); }
@@ -694,6 +883,14 @@ footer a:hover { color: var(--text); }
   .about-grid { grid-template-columns: 1fr; }
   .testimonials { grid-template-columns: 1fr; }
   .sample-row { grid-template-columns: 80px 1fr 40px; }
+
+  /* Engagements stack vertically on mobile */
+  .tiers-grid { grid-template-columns: 1fr; }
+  .when-grid { grid-template-columns: 1fr; }
+
+  /* Contact email scales down */
+  .contact-email { font-size: var(--text-lg); word-break: break-all; }
+  .contact-block { gap: var(--sp-2); }
 
   /* Content padding reduced on mobile */
   .page { padding: 0 var(--sp-4); }

@@ -23,6 +23,7 @@ import Base from '../layouts/Base.astro';
         <span class="nav-toggle__bar"></span>
       </button>
       <nav class="header__nav" id="primary-nav">
+        <a href="#engagements">Engagements</a>
         <a href="#framework">Framework</a>
         <a href="#deliverables">Deliverables</a>
         <a href="#track-record">Track Record</a>
@@ -64,8 +65,96 @@ import Base from '../layouts/Base.astro';
       </div>
     </section>
 
+    <!-- Engagements -->
+    <section class="section section--alt" id="engagements">
+      <h2>Engagements</h2>
+      <p>Three buying surfaces, mapped to deal-cycle moments. Engagements scoped against deal size, target complexity, and timeline.</p>
+
+      <h3>When to Engage</h3>
+      <div class="when-grid">
+        <div class="when-card">
+          <span class="when-stage">Pre-LOI</span>
+          <span class="when-trigger">Initial technology screen on a target before committing to full diligence spend.</span>
+        </div>
+        <div class="when-card">
+          <span class="when-stage">In Diligence</span>
+          <span class="when-trigger">Full 8-dimension assessment with quantified risk, cost-to-fix, and IC-ready deliverables.</span>
+        </div>
+        <div class="when-card">
+          <span class="when-stage">AI / IP Risk</span>
+          <span class="when-trigger">Targeted assessment of AI moat, training-data provenance, and EU AI Act exposure.</span>
+        </div>
+        <div class="when-card">
+          <span class="when-stage">Bolt-on Readiness</span>
+          <span class="when-trigger">Integration-readiness assessment ahead of platform consolidation or acquisition.</span>
+        </div>
+        <div class="when-card">
+          <span class="when-stage">Post-Close</span>
+          <span class="when-trigger">100-day technology execution blueprint for portfolio operating partners.</span>
+        </div>
+      </div>
+
+      <h3>Tiers</h3>
+      <div class="tiers-grid">
+        <div class="tier-card">
+          <div class="tier-card__header">
+            <strong>Pre-LOI Tech Risk Screen</strong>
+            <span class="tier-card__price">from &pound;5K</span>
+          </div>
+          <div class="tier-card__meta">
+            <span>2&ndash;3 working days</span>
+            <span>Pre-LOI &middot; Early triage</span>
+          </div>
+          <ul class="tier-card__list">
+            <li>Architecture, security, and AI red-flag scan</li>
+            <li>Top-3 deal-breaker risks identified</li>
+            <li>Two-page go / no-go memo</li>
+            <li>Optional scope and quote for full DD</li>
+          </ul>
+        </div>
+
+        <div class="tier-card tier-card--feature">
+          <div class="tier-card__header">
+            <span class="tier-card__badge">Flagship</span>
+            <strong>Full Technology DD</strong>
+            <span class="tier-card__price">from &pound;18K</span>
+          </div>
+          <div class="tier-card__meta">
+            <span>10&ndash;15 working days</span>
+            <span>Full assessment for IC</span>
+          </div>
+          <ul class="tier-card__list">
+            <li>8-dimension assessment with peer-benchmarked scoring</li>
+            <li>Phased cost-to-fix in GBP, with confidence intervals</li>
+            <li>Deal structuring implications: price adjustment, escrow, reps &amp; warranties</li>
+            <li>First 100-day operational plan</li>
+            <li>IC-ready PDF and executive summary</li>
+          </ul>
+        </div>
+
+        <div class="tier-card">
+          <div class="tier-card__header">
+            <strong>Post-Close 100-Day Plan</strong>
+            <span class="tier-card__price">from &pound;25K</span>
+          </div>
+          <div class="tier-card__meta">
+            <span>2&ndash;3 weeks</span>
+            <span>Value creation execution</span>
+          </div>
+          <ul class="tier-card__list">
+            <li>Week-by-week workstream plan, owner-assigned</li>
+            <li>KPI baselines and dashboard scoping</li>
+            <li>Tech steering committee setup</li>
+            <li>Quick-win cost actions: cloud, licences, vendor consolidation</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="tier-note">Pricing indicative. Firm quote follows a 30-minute scoping call.</p>
+    </section>
+
     <!-- Framework -->
-    <section class="section section--alt" id="framework">
+    <section class="section" id="framework">
       <h2>Assessment Framework</h2>
       <p>Eight dimensions, each producing a standardised 1&ndash;5 score against peer benchmarks and a quantified financial estimate.</p>
       <table class="scorecard">
@@ -122,7 +211,7 @@ import Base from '../layouts/Base.astro';
     </section>
 
     <!-- Deliverables -->
-    <section class="section" id="deliverables">
+    <section class="section section--alt" id="deliverables">
       <h2>Deliverables</h2>
       <p>Every engagement produces six artefacts, designed for direct use in IC materials and for the deal team post-close.</p>
 
@@ -270,25 +359,6 @@ import Base from '../layouts/Base.astro';
       <a href="#contact" class="btn" style="margin-top: var(--sp-5);">Discuss Your Next Deal &rarr;</a>
     </section>
 
-    <!-- Testimonials -->
-    <section class="section section--alt" id="testimonials">
-      <h2>What Clients Say</h2>
-      <div class="testimonials">
-        <blockquote class="testimonial">
-          <p>&ldquo;Pedro excels at executing highly technical projects, asking the right questions and inspiring the team with a deep sense of focus and purpose.&rdquo;</p>
-          <cite>Itamar Leizorek, CEO, Noxgen Biotech</cite>
-        </blockquote>
-        <blockquote class="testimonial">
-          <p>&ldquo;He has a remarkable ability to foresee industry trends and identify strategic opportunities that others may overlook.&rdquo;</p>
-          <cite>Jeronimo Mohar, Founder & CEO, Aleph RI</cite>
-        </blockquote>
-        <blockquote class="testimonial">
-          <p>&ldquo;An excellent track record of building and leading high-performance technical teams to develop and implement software and data solutions.&rdquo;</p>
-          <cite>Daniel Servitje, Co-Founder & CEO</cite>
-        </blockquote>
-      </div>
-    </section>
-
     <!-- Track Record -->
     <section class="section" id="track-record">
       <h2>Track Record</h2>
@@ -334,13 +404,34 @@ import Base from '../layouts/Base.astro';
       </p>
     </section>
 
+    <!-- Operator References -->
+    <section class="section section--alt" id="references">
+      <h2>Operator References</h2>
+      <p>References from operators and founders Pedro has worked with directly. PE deal-side references available on request.</p>
+      <div class="testimonials">
+        <blockquote class="testimonial">
+          <p>&ldquo;Pedro excels at executing highly technical projects, asking the right questions and inspiring the team with a deep sense of focus and purpose.&rdquo;</p>
+          <cite>Itamar Leizorek, CEO, Noxgen Biotech</cite>
+        </blockquote>
+        <blockquote class="testimonial">
+          <p>&ldquo;He has a remarkable ability to foresee industry trends and identify strategic opportunities that others may overlook.&rdquo;</p>
+          <cite>Jeronimo Mohar, Founder & CEO, Aleph RI</cite>
+        </blockquote>
+        <blockquote class="testimonial">
+          <p>&ldquo;An excellent track record of building and leading high-performance technical teams to develop and implement software and data solutions.&rdquo;</p>
+          <cite>Daniel Servitje, Co-Founder & CEO</cite>
+        </blockquote>
+      </div>
+    </section>
+
     <!-- About -->
-    <section class="section section--alt" id="about">
+    <section class="section" id="about">
       <h2>About</h2>
       <div class="about-grid">
         <div>
           <h3>The Practice</h3>
           <p>Valepath provides structured technology due diligence for PE-backed transactions. Every assessment follows a standardised 8-dimension framework &mdash; including a distinct AI &amp; proprietary technology assessment and bolt-on integration readiness &mdash; producing peer-benchmarked risk scores and financial estimates designed to be lifted directly into an IC memo. We work with mid-market PE firms on deals where technology is a material factor in the investment thesis.</p>
+          <p>Engagements are led by Pedro Rivera, with specialist security, cloud, AI, and engineering diligence support brought in where required.</p>
         </div>
         <div>
           <h3>Pedro Rivera Torres Moir</h3>
@@ -350,20 +441,23 @@ import Base from '../layouts/Base.astro';
     </section>
 
     <!-- Contact -->
-    <section class="section" id="contact">
+    <section class="section section--alt" id="contact">
       <h2>Get in Touch</h2>
-      <p>If you need technology risk quantified before a deal closes, or a value creation roadmap for a portfolio company.</p>
-      <div class="contact-row">
+      <p>If you need technology risk quantified before a deal closes, or a value creation roadmap for a portfolio company. A brief description of the deal and timeline gets a same-day response.</p>
+      <div class="contact-block">
+        <a href="mailto:pedro&#64;valepath.com" class="contact-email">pedro&#64;valepath.com</a>
         <button
           type="button"
-          class="btn copy-email"
+          class="copy-email"
           data-u="pedro"
           data-d="valepath.com"
           aria-label="Copy contact email to clipboard"
         >
-          <span class="copy-email__default">Copy Contact Email</span>
+          <span class="copy-email__default">Copy &darr;</span>
           <span class="copy-email__done" aria-hidden="true">Copied &check;</span>
         </button>
+      </div>
+      <div class="contact-row">
         <a href="https://linkedin.com/in/pedrortm" target="_blank" rel="noopener">LinkedIn</a>
         <a href="https://pedrortm.com" target="_blank" rel="noopener">pedrortm.com</a>
       </div>
