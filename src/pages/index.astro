@@ -280,19 +280,19 @@ const ddDimensions = [
         <p class="section-lead">
           For a technology assessment, a transformation that must reach production, or a transaction where the technology thesis needs to be quantified. A brief description of the organisation, the decision, and the timeline is sufficient to begin.
         </p>
-        <div class="contact-block">
-          <button
-            type="button"
+        <div class="contact-row">
+          <a href="https://linkedin.com/in/pedrortm" target="_blank" rel="noopener">LinkedIn</a>
+          <span class="contact-row__separator" aria-hidden="true">&middot;</span>
+          <a href="https://pedrortm.com" target="_blank" rel="noopener">pedrortm.com</a>
+          <span class="contact-row__separator" aria-hidden="true">&middot;</span>
+          <a
+            href="#contact"
             class="contact-email"
             aria-label="Copy Valepath contact email to clipboard"
           >
             <span class="contact-email__default">Copy email</span>
             <span class="contact-email__done" aria-hidden="true">Copied &check;</span>
-          </button>
-        </div>
-        <div class="contact-row">
-          <a href="https://linkedin.com/in/pedrortm" target="_blank" rel="noopener">LinkedIn</a>
-          <a href="https://pedrortm.com" target="_blank" rel="noopener">pedrortm.com</a>
+          </a>
         </div>
       </section>
     </main>
@@ -302,7 +302,8 @@ const ddDimensions = [
 
   <script is:inline>
     document.querySelectorAll('.contact-email').forEach((button) => {
-      button.addEventListener('click', async () => {
+      button.addEventListener('click', async (event) => {
+        event.preventDefault();
         const local = [111, 114, 100, 101, 112].reverse();
         const domain = [109, 111, 99, 46, 104, 116, 97, 112, 101, 108, 97, 118].reverse();
         const email = String.fromCharCode(...local, 64, ...domain);

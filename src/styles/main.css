@@ -658,12 +658,30 @@ a:hover { color: var(--text-muted); text-decoration: underline; }
 /* === Contact === */
 .contact-row {
   display: flex;
-  gap: var(--sp-4);
+  gap: var(--sp-2);
   align-items: center;
   margin-top: var(--sp-4);
+  white-space: nowrap;
 }
 
-.contact-row .btn { margin-top: 0; }
+.contact-row a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+  padding: var(--sp-2) 0;
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+}
+
+.contact-row a:hover {
+  color: var(--text);
+  text-decoration: none;
+}
+
+.contact-row__separator {
+  color: var(--border-strong);
+  user-select: none;
+}
 
 /* === Footer === */
 footer {
@@ -839,35 +857,8 @@ footer a:hover { color: var(--text); }
   margin-top: var(--sp-2);
 }
 
-/* === Copy-only email contact === */
-.contact-block {
-  display: flex;
-  align-items: center;
-  gap: var(--sp-3);
-  margin-top: var(--sp-4);
-  flex-wrap: wrap;
-}
-
 .contact-email {
-  appearance: none;
   cursor: pointer;
-  background: transparent;
-  border: 0;
-  border-bottom: 1px solid var(--accent);
-  font-family: var(--font-display);
-  font-size: var(--text-xl);
-  font-weight: 400;
-  color: var(--text);
-  letter-spacing: -0.01em;
-  text-decoration: none;
-  padding: 0 0 2px;
-  transition: color 0.15s ease-out, border-color 0.15s ease-out;
-}
-
-.contact-email:hover {
-  color: var(--accent);
-  text-decoration: none;
-  border-bottom-color: var(--text);
 }
 
 .contact-email__done {
@@ -897,10 +888,6 @@ footer a:hover { color: var(--text); }
   .tiers-grid { grid-template-columns: 1fr; }
   .when-grid { grid-template-columns: 1fr; }
 
-  /* Contact email scales down */
-  .contact-email { font-size: var(--text-lg); word-break: break-all; }
-  .contact-block { gap: var(--sp-2); }
-
   /* Content padding reduced on mobile */
   .page { padding: 0 var(--sp-4); }
 
@@ -915,13 +902,6 @@ footer a:hover { color: var(--text); }
 
   /* Hero offer box */
   .hero__offer { font-size: var(--text-sm); }
-
-  /* Contact row stacks vertically */
-  .contact-row {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: var(--sp-3);
-  }
 
   /* Footer stacks vertically */
   footer {
