@@ -198,43 +198,6 @@ a:hover { color: var(--text-muted); text-decoration: underline; }
   margin-top: var(--sp-2);
 }
 
-/* Copy-email button: ghost button, accent-tinted on copy. Brand-coherent — no green. */
-.copy-email {
-  cursor: pointer;
-  border: 1px solid var(--border-strong);
-  background: transparent;
-  color: var(--text-muted);
-  font-family: inherit;
-  font-size: var(--text-xs);
-  font-weight: 500;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  padding: var(--sp-2) var(--sp-3);
-  border-radius: 3px;
-  position: relative;
-  transition: border-color 0.15s ease-out, color 0.15s ease-out, background 0.15s ease-out;
-}
-.copy-email:hover {
-  border-color: var(--accent);
-  color: var(--text);
-}
-.copy-email__done {
-  display: none;
-  color: var(--accent);
-}
-.copy-email.is-copied {
-  border-color: var(--accent);
-  background: var(--accent-light);
-  color: var(--text);
-}
-.copy-email.is-copied .copy-email__default {
-  display: none;
-}
-.copy-email.is-copied .copy-email__done {
-  display: inline;
-}
-
-
 /* === Header === */
 .header {
   display: flex;
@@ -876,7 +839,7 @@ footer a:hover { color: var(--text); }
   margin-top: var(--sp-2);
 }
 
-/* === Visible email in Contact === */
+/* === Copy-only email contact === */
 .contact-block {
   display: flex;
   align-items: center;
@@ -886,14 +849,18 @@ footer a:hover { color: var(--text); }
 }
 
 .contact-email {
+  appearance: none;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--accent);
   font-family: var(--font-display);
   font-size: var(--text-xl);
   font-weight: 400;
   color: var(--text);
   letter-spacing: -0.01em;
   text-decoration: none;
-  border-bottom: 1px solid var(--accent);
-  padding-bottom: 2px;
+  padding: 0 0 2px;
   transition: color 0.15s ease-out, border-color 0.15s ease-out;
 }
 
@@ -901,6 +868,19 @@ footer a:hover { color: var(--text); }
   color: var(--accent);
   text-decoration: none;
   border-bottom-color: var(--text);
+}
+
+.contact-email__done {
+  display: none;
+  color: var(--accent);
+}
+
+.contact-email.is-copied .contact-email__default {
+  display: none;
+}
+
+.contact-email.is-copied .contact-email__done {
+  display: inline;
 }
 
 /* === Responsive === */

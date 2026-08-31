@@ -281,16 +281,13 @@ const ddDimensions = [
           For a technology assessment, a transformation that must reach production, or a transaction where the technology thesis needs to be quantified. A brief description of the organisation, the decision, and the timeline is sufficient to begin.
         </p>
         <div class="contact-block">
-          <a href="mailto:pedro&#64;valepath.com" class="contact-email">pedro&#64;valepath.com</a>
           <button
             type="button"
-            class="copy-email"
-            data-u="pedro"
-            data-d="valepath.com"
-            aria-label="Copy contact email to clipboard"
+            class="contact-email"
+            aria-label="Copy Valepath contact email to clipboard"
           >
-            <span class="copy-email__default">Copy</span>
-            <span class="copy-email__done" aria-hidden="true">Copied &check;</span>
+            <span class="contact-email__default">Copy email</span>
+            <span class="contact-email__done" aria-hidden="true">Copied &check;</span>
           </button>
         </div>
         <div class="contact-row">
@@ -303,10 +300,12 @@ const ddDimensions = [
     <SiteFooter />
   </div>
 
-  <script>
-    document.querySelectorAll<HTMLButtonElement>('.copy-email').forEach((button) => {
+  <script is:inline>
+    document.querySelectorAll('.contact-email').forEach((button) => {
       button.addEventListener('click', async () => {
-        const email = `${button.dataset.u}\u0040${button.dataset.d}`;
+        const local = [111, 114, 100, 101, 112].reverse();
+        const domain = [109, 111, 99, 46, 104, 116, 97, 112, 101, 108, 97, 118].reverse();
+        const email = String.fromCharCode(...local, 64, ...domain);
         try {
           await navigator.clipboard.writeText(email);
         } catch {
