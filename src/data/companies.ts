@@ -20,4 +20,4 @@ export const companies = [
   sistemasHidraulicos,
 ];
 
-export const featuredCompanies = companies.slice(0, 4);
+export const featuredCompanies = companies.slice(0, 3);
