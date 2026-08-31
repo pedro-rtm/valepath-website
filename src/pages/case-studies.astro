@@ -1,0 +1,101 @@
+---
+import Base from '../layouts/Base.astro';
+import CompanyCard from '../components/CompanyCard.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import { companies } from '../data/companies';
+
+const industries = [...new Set(companies.map((company) => company.industry))];
+const initiativeCount = companies.reduce((sum, company) => sum + company.totalInitiatives, 0);
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Valepath transformation case studies',
+  numberOfItems: companies.length,
+  itemListElement: companies.map((company, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    name: company.name,
+    url: `https://valepath.com/case-studies/${company.slug}/`,
+  })),
+};
+---
+
+<Base
+  title="Transformation Case Studies — Valepath"
+  description="Nine detailed company-wide technology transformations across hospitality, construction, real estate, education, utilities, smart communities, and public services."
+  jsonLd={jsonLd}
+>
+  <div class="page">
+    <SiteHeader />
+
+    <main>
+      <section class="case-index-hero">
+        <p class="section-kicker">Transformation record</p>
+        <h1>Nine companies. Systems changed in production.</h1>
+        <p class="hero__lead">
+          The record spans technology assessment, enterprise systems, infrastructure, IoT, data, automation, and operating-model change. Each case details the initiatives deployed and the operating results they produced.
+        </p>
+        <div class="case-index-stats" aria-label="Case study summary">
+          <span><strong>9</strong> companies</span>
+          <span><strong>{initiativeCount}</strong> documented initiatives</span>
+          <span><strong>9</strong> industries</span>
+        </div>
+      </section>
+
+      <section class="section case-index-list" aria-labelledby="case-study-heading">
+        <div class="section-heading-row">
+          <h2 id="case-study-heading">Case studies</h2>
+          <a href="/#engagements" class="text-link">How Valepath engages &rarr;</a>
+        </div>
+
+        <div class="filter-bar" id="industry-filter" aria-label="Filter case studies by industry">
+          <button type="button" class="filter-btn active" data-industry="all" aria-pressed="true">All</button>
+          {industries.map((industry) => (
+            <button type="button" class="filter-btn" data-industry={industry} aria-pressed="false">{industry}</button>
+          ))}
+        </div>
+
+        <div class="transformations-grid" id="companies-grid">
+          {companies.map((company) => (
+            <div class="company-grid-item" data-industry={company.industry}>
+              <CompanyCard company={company} />
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section class="case-index-cta">
+        <div>
+          <p class="section-kicker">The next case</p>
+          <h2>Bring the operating problem.</h2>
+        </div>
+        <a href="/#contact" class="btn">Discuss an engagement &rarr;</a>
+      </section>
+    </main>
+
+    <SiteFooter />
+  </div>
+
+  <script>
+    const filterBar = document.getElementById('industry-filter');
+    const items = document.querySelectorAll<HTMLElement>('.company-grid-item[data-industry]');
+
+    filterBar?.addEventListener('click', (event) => {
+      const button = (event.target as HTMLElement).closest<HTMLButtonElement>('.filter-btn');
+      if (!button) return;
+
+      filterBar.querySelectorAll('.filter-btn').forEach((candidate) => {
+        candidate.classList.remove('active');
+        candidate.setAttribute('aria-pressed', 'false');
+      });
+      button.classList.add('active');
+      button.setAttribute('aria-pressed', 'true');
+
+      const industry = button.dataset.industry;
+      items.forEach((item) => {
+        item.hidden = industry !== 'all' && item.dataset.industry !== industry;
+      });
+    });
+  </script>
+</Base>

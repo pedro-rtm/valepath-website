@@ -1,0 +1,163 @@
+---
+import Base from '../../layouts/Base.astro';
+import CompanySwitcher from '../../components/CompanySwitcher.astro';
+import DomainFilter from '../../components/DomainFilter.astro';
+import InitiativeCard from '../../components/InitiativeCard.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import { companies } from '../../data/companies';
+import type { Company } from '../../data/types';
+
+export function getStaticPaths() {
+  return companies.map((company) => ({
+    params: { slug: company.slug },
+    props: { company },
+  }));
+}
+
+interface Props {
+  company: Company;
+}
+
+const { company } = Astro.props;
+const starMetrics = company.initiatives.flatMap((initiative) => initiative.metrics).filter((metric) => metric.isStarMetric);
+const allDomains = [...new Set(company.initiatives.flatMap((initiative) => initiative.domains))];
+const allTools = [...new Set(company.initiatives.flatMap((initiative) => initiative.toolIds))].filter(Boolean);
+const currentIndex = companies.findIndex((candidate) => candidate.slug === company.slug);
+const previousCompany = currentIndex > 0 ? companies[currentIndex - 1] : null;
+const nextCompany = currentIndex < companies.length - 1 ? companies[currentIndex + 1] : null;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: `${company.name} — Technology Transformation Case Study`,
+  url: `https://valepath.com/case-studies/${company.slug}/`,
+  author: { '@type': 'Organization', name: 'Valepath', url: 'https://valepath.com' },
+  about: { '@type': 'Organization', name: company.name, industry: company.industry },
+  description: `${company.description} ${company.totalInitiatives} documented initiatives.`,
+  keywords: [company.industry, ...allDomains, ...allTools.slice(0, 10)].join(', '),
+};
+
+const toolLabels: Record<string, string> = {
+  airtable: 'Airtable', microsoft_navision: 'Microsoft Dynamics 365', powerbi: 'Power BI',
+  azure_ad: 'Azure AD', google_workspace: 'Google Workspace', microsoft_office: 'Microsoft 365',
+  microsoft_power_platform: 'Power Platform', microsoft_teams: 'Microsoft Teams',
+  workbeat: 'Workbeat', microsoft_forms: 'Microsoft Forms', survey_monkey: 'SurveyMonkey',
+  zendesk: 'Zendesk', adobe_illustrator: 'Adobe Illustrator', adobe_photoshop: 'Adobe Photoshop',
+  adobe_premiere_pro: 'Adobe Premiere Pro', adobe_muse: 'Adobe Muse',
+  weebly: 'Weebly', novohit: 'NovoHit ERP', siteminder: 'SiteMinder',
+  quohotel: 'QuoHotel ERP (Dynamics 365)', aspel_coi: 'Aspel COI', aspel_noi: 'Aspel NOI',
+  suprema_bioentry: 'Suprema BioEntry', suprema_bioentry_w2: 'Suprema BioEntry W2',
+  genetec_autovu: 'Genetec AutoVu', genetec_security_center: 'Genetec Security Center',
+  genetec: 'Genetec', axis_cameras: 'Axis Cameras', '2n_intercoms': '2N Intercoms',
+  ubiquiti_unifi: 'Ubiquiti UniFi', ubiquity_radios: 'Ubiquiti Radios',
+  caterpillar_visionlink: 'CAT VisionLink', htc_vive: 'HTC Vive',
+  autodesk_revit: 'Autodesk Revit', autodesk_inventor: 'Autodesk Inventor',
+  autodesk_infraworks: 'Autodesk InfraWorks', autodesk_civil_3d: 'Autodesk Civil 3D',
+  revit_live: 'Revit Live', pix4d: 'Pix4D', dronedeploy: 'DroneDeploy',
+  mapillary: 'Mapillary', sensefly_ebee: 'senseFly eBee', mapbox: 'Mapbox',
+  odoo: 'Odoo ERP', odoo_inventory: 'Odoo Inventory', thingsboard: 'ThingsBoard',
+  modbus: 'Modbus', libelium: 'Libelium', sigfox: 'Sigfox',
+  microsoft_project: 'Microsoft Project', google_sheets: 'Google Sheets',
+  google_analytics: 'Google Analytics', wordpress: 'WordPress',
+  simplybookme: 'SimplyBook.me', hubspot: 'HubSpot',
+  trbonet: 'TRBOnet', motorola_mototrbo: 'Motorola MOTOTRBO', geotab: 'Geotab',
+  windows_server: 'Windows Server', hytera_dispatch: 'Hytera Dispatch',
+  panasonic_hx_a1: 'Panasonic HX-A1', powerapps: 'Power Apps',
+  azure_iot: 'Azure IoT', barcode_scanners: 'Barcode Scanners',
+  powerbi_gateway: 'Power BI Gateway',
+  tesla_destination_charging: 'Tesla Destination Charging',
+  local_permitting: 'Local Permitting', power_infrastructure: 'Power Infrastructure',
+};
+---
+
+<Base
+  title={`${company.name} — Valepath Transformation Case Study`}
+  description={`${company.description} ${company.totalInitiatives} documented technology and operating-transformation initiatives.`}
+  ogImage={company.logo}
+  jsonLd={jsonLd}
+>
+  <div class="page">
+    <SiteHeader />
+
+    <main class="case-detail">
+      <div class="sub-nav">
+        <a href="/case-studies/" class="back-link">&larr; All case studies</a>
+        <CompanySwitcher currentSlug={company.slug} />
+      </div>
+
+      <header class="company-header">
+        <div class="company-header__logo-panel">
+          <img src={company.logo} alt={`${company.name} logo`} class="company-header__logo" />
+        </div>
+        <div class="company-header__content">
+          <p class="section-kicker">{company.industry}</p>
+          <h1>{company.name}</h1>
+          <p class="company-header__subtitle">{company.subtitle}</p>
+          <p>{company.description}</p>
+          <div class="company-meta">
+            <span class="tag">{company.title}</span>
+            <span class="tag">{company.totalInitiatives} initiatives</span>
+            <a href={company.website} target="_blank" rel="noopener" class="company-website">
+              Company website &nearr;
+            </a>
+          </div>
+        </div>
+      </header>
+
+      {starMetrics.length > 0 && (
+        <section class="key-metrics-strip" aria-label="Selected outcomes">
+          {starMetrics.slice(0, 6).map((metric) => (
+            <div class="key-metric-item">
+              <span class="key-metric-value">{metric.value}{metric.suffix}</span>
+              <span class="key-metric-label">{metric.title}</span>
+            </div>
+          ))}
+        </section>
+      )}
+
+      <section class="case-detail__section">
+        <div class="case-detail__heading">
+          <div>
+            <p class="section-kicker">Deployed work</p>
+            <h2>Initiatives</h2>
+          </div>
+          <p>Filter the record by operating domain.</p>
+        </div>
+        <DomainFilter domains={allDomains} />
+        <div class="initiatives-grid">
+          {company.initiatives.map((initiative) => <InitiativeCard initiative={initiative} />)}
+        </div>
+      </section>
+
+      {allTools.length > 0 && (
+        <section class="case-detail__section tools-section">
+          <p class="section-kicker">Technology estate</p>
+          <h2>Tools &amp; platforms</h2>
+          <div class="tools-cloud">
+            {allTools.map((tool) => <span class="tag">{toolLabels[tool] || tool}</span>)}
+          </div>
+        </section>
+      )}
+
+      <nav class="prev-next" aria-label="Adjacent case studies">
+        {previousCompany ? (
+          <a href={`/case-studies/${previousCompany.slug}/`}>&larr; {previousCompany.name}</a>
+        ) : <span />}
+        {nextCompany ? (
+          <a href={`/case-studies/${nextCompany.slug}/`}>{nextCompany.name} &rarr;</a>
+        ) : <span />}
+      </nav>
+
+      <section class="case-detail__cta">
+        <div>
+          <p class="section-kicker">Assess &middot; deploy &middot; transfer</p>
+          <h2>What must change in your organisation?</h2>
+        </div>
+        <a href="/#contact" class="btn">Discuss an engagement &rarr;</a>
+      </section>
+    </main>
+
+    <SiteFooter />
+  </div>
+</Base>

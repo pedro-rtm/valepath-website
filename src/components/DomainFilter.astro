@@ -1,0 +1,56 @@
+---
+interface Props {
+  domains: string[];
+}
+
+const { domains } = Astro.props;
+
+const domainLabels: Record<string, string> = {
+  growth: 'Growth',
+  operations: 'Operations',
+  product: 'Product',
+  people: 'People',
+  insights: 'Insights',
+  central_functions: 'Central Functions',
+  capital: 'Capital',
+};
+---
+
+<div class="filter-bar" id="domain-filter">
+  <button type="button" class="filter-btn active" data-domain="all" aria-pressed="true">All</button>
+  {domains.map(d => (
+    <button type="button" class="filter-btn" data-domain={d} aria-pressed="false">
+      {domainLabels[d] || d}
+    </button>
+  ))}
+</div>
+
+<script>
+  const filterBar = document.getElementById('domain-filter');
+  const cards = document.querySelectorAll('.initiative-card[data-domains]');
+
+  filterBar?.addEventListener('click', (e) => {
+    const btn = (e.target as HTMLElement).closest('.filter-btn') as HTMLElement | null;
+    if (!btn) return;
+
+    // Update active state
+    filterBar.querySelectorAll('.filter-btn').forEach((b) => {
+      b.classList.remove('active');
+      b.setAttribute('aria-pressed', 'false');
+    });
+    btn.classList.add('active');
+    btn.setAttribute('aria-pressed', 'true');
+
+    const domain = btn.dataset.domain;
+
+    cards.forEach(card => {
+      const el = card as HTMLElement;
+      if (domain === 'all') {
+        el.style.display = '';
+      } else {
+        const cardDomains = el.dataset.domains?.split(',') || [];
+        el.style.display = cardDomains.includes(domain!) ? '' : 'none';
+      }
+    });
+  });
+</script>

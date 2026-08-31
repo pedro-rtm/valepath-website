@@ -1,0 +1,48 @@
+---
+const path = Astro.url.pathname;
+---
+
+<header class="header">
+  <a href="/" class="header__brand" aria-label="Valepath home">Valepath</a>
+  <button
+    type="button"
+    class="nav-toggle"
+    aria-label="Toggle navigation menu"
+    aria-expanded="false"
+    aria-controls="primary-nav"
+  >
+    <span class="nav-toggle__bar"></span>
+    <span class="nav-toggle__bar"></span>
+    <span class="nav-toggle__bar"></span>
+  </button>
+  <nav class="header__nav" id="primary-nav" aria-label="Primary navigation">
+    <a href="/#engagements">Engagements</a>
+    <a href="/#capabilities">Capabilities</a>
+    <a href="/case-studies/" class:list={{ active: path.startsWith('/case-studies') }}>Case Studies</a>
+    <a href="/#about">About</a>
+    <a href="/#contact" class="nav-cta">Get in Touch</a>
+  </nav>
+</header>
+
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>('.nav-toggle');
+  const nav = document.getElementById('primary-nav');
+
+  if (toggle && nav) {
+    const close = () => {
+      toggle.setAttribute('aria-expanded', 'false');
+      nav.classList.remove('is-open');
+    };
+
+    toggle.addEventListener('click', () => {
+      const willOpen = toggle.getAttribute('aria-expanded') !== 'true';
+      toggle.setAttribute('aria-expanded', String(willOpen));
+      nav.classList.toggle('is-open', willOpen);
+    });
+
+    nav.querySelectorAll('a').forEach((link) => link.addEventListener('click', close));
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') close();
+    });
+  }
+</script>

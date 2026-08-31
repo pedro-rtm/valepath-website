@@ -4,11 +4,72 @@ import '../styles/main.css';
 interface Props {
   title: string;
   description: string;
+  ogImage?: string | null;
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 }
 
-const { title, description } = Astro.props;
+const { title, description, ogImage = '/og-image.png', jsonLd } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const ogImageURL = new URL('/og-image.png', Astro.site).href;
+const ogImageURL = ogImage ? new URL(ogImage, Astro.site).href : null;
+const additionalJsonLd = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
+
+const organizationJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Valepath',
+  url: 'https://valepath.com',
+  slogan: 'Assess. Deploy. Transfer.',
+  foundingDate: '2013',
+  description:
+    'A technology transformation practice that assesses technology, deploys the fix, and transfers durable capability across enterprise systems, infrastructure, data, automation, AI, and technology due diligence.',
+  logo: 'https://valepath.com/og-image.png',
+  founder: {
+    '@type': 'Person',
+    name: 'Pedro Rivera Torres Moir',
+    jobTitle: 'Founder & Principal',
+    url: 'https://pedrortm.com',
+    sameAs: ['https://linkedin.com/in/pedrortm', 'https://pedrortm.com'],
+  },
+  areaServed: [
+    { '@type': 'AdministrativeArea', name: 'Europe' },
+    { '@type': 'AdministrativeArea', name: 'North America' },
+  ],
+  serviceType: [
+    'Technology assessment',
+    'Technology transformation',
+    'Technology due diligence',
+    'Enterprise systems implementation',
+    'Data and automation transformation',
+  ],
+  knowsAbout: [
+    'ERP',
+    'CRM',
+    'enterprise systems',
+    'technology infrastructure',
+    'IoT',
+    'business intelligence',
+    'data platforms',
+    'workflow automation',
+    'artificial intelligence',
+    'technology due diligence',
+    'operating-model transformation',
+  ],
+  sameAs: ['https://linkedin.com/in/pedrortm', 'https://pedrortm.com'],
+};
+
+const personJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Pedro Rivera Torres Moir',
+  url: 'https://pedrortm.com',
+  jobTitle: 'Founder & Principal',
+  worksFor: {
+    '@type': 'Organization',
+    name: 'Valepath',
+    url: 'https://valepath.com',
+  },
+  sameAs: ['https://linkedin.com/in/pedrortm', 'https://pedrortm.com'],
+};
 ---
 
 <!DOCTYPE html>
@@ -30,7 +91,7 @@ const ogImageURL = new URL('/og-image.png', Astro.site).href;
   <meta property="og:type" content="website" />
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
-  <meta property="og:image" content={ogImageURL} />
+  {ogImageURL && <meta property="og:image" content={ogImageURL} />}
   <meta property="og:url" content={canonicalURL} />
   <meta property="og:site_name" content="Valepath" />
   <meta property="og:locale" content="en_GB" />
@@ -39,76 +100,18 @@ const ogImageURL = new URL('/og-image.png', Astro.site).href;
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={description} />
-  <meta name="twitter:image" content={ogImageURL} />
+  {ogImageURL && <meta name="twitter:image" content={ogImageURL} />}
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
 
-  <!-- JSON-LD: Organization -->
-  <script type="application/ld+json" set:html={JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Valepath",
-    "url": "https://valepath.com",
-    "description": "Technology due diligence for PE-backed transactions. Structured 8-dimension assessment framework with peer-benchmarked risk scoring, cost-to-fix estimates, a first 100 days operational plan, and deal-structuring implications.",
-    "logo": "https://valepath.com/og-image.png",
-    "founder": {
-      "@type": "Person",
-      "name": "Pedro Rivera Torres Moir",
-      "jobTitle": "Founder & Principal",
-      "url": "https://pedrortm.com",
-      "sameAs": [
-        "https://linkedin.com/in/pedrortm",
-        "https://pedrortm.com"
-      ]
-    },
-    "areaServed": {
-      "@type": "AdministrativeArea",
-      "name": "Europe"
-    },
-    "serviceType": "Technology Due Diligence",
-    "knowsAbout": [
-      "technology due diligence",
-      "PE value creation",
-      "technical risk assessment",
-      "AI assessment",
-      "IP portfolio evaluation",
-      "SOC 2 readiness",
-      "GDPR compliance",
-      "EU AI Act",
-      "cloud cost optimisation",
-      "bolt-on integration readiness"
-    ],
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "London",
-      "addressCountry": "GB"
-    },
-    "sameAs": [
-      "https://linkedin.com/in/pedrortm",
-      "https://pedrortm.com"
-    ]
-  })} />
-
-  <!-- JSON-LD: Person (founder) -->
-  <script type="application/ld+json" set:html={JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Pedro Rivera Torres Moir",
-    "url": "https://pedrortm.com",
-    "jobTitle": "Founder & Principal",
-    "worksFor": {
-      "@type": "Organization",
-      "name": "Valepath",
-      "url": "https://valepath.com"
-    },
-    "sameAs": [
-      "https://linkedin.com/in/pedrortm",
-      "https://pedrortm.com"
-    ]
-  })} />
+  <script type="application/ld+json" set:html={JSON.stringify(organizationJsonLd)} />
+  <script type="application/ld+json" set:html={JSON.stringify(personJsonLd)} />
+  {additionalJsonLd.map((item) => (
+    <script type="application/ld+json" set:html={JSON.stringify(item)} />
+  ))}
 </head>
 <body>
   <slot />

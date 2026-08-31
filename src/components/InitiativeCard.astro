@@ -1,0 +1,39 @@
+---
+import type { Initiative } from '../data/types';
+
+interface Props {
+  initiative: Initiative;
+}
+
+const { initiative } = Astro.props;
+
+const domainLabels: Record<string, string> = {
+  growth: 'Growth',
+  operations: 'Operations',
+  product: 'Product',
+  people: 'People',
+  insights: 'Insights',
+  central_functions: 'Central Functions',
+  capital: 'Capital',
+};
+---
+
+<div class="initiative-card" data-domains={initiative.domains.join(',')}>
+  <div class="initiative-title">{initiative.title}</div>
+  <p class="initiative-description">{initiative.description}</p>
+  <p class="initiative-impact">{initiative.impact}</p>
+  {initiative.metrics.length > 0 && (
+    <div class="initiative-metrics">
+      {initiative.metrics.map(m => (
+        <span class:list={['tag', { 'tag--star': m.isStarMetric }]}>
+          {m.value}{m.suffix} {m.title}
+        </span>
+      ))}
+    </div>
+  )}
+  <div class="initiative-meta">
+    {initiative.domains.map(d => (
+      <span class="tag">{domainLabels[d] || d}</span>
+    ))}
+  </div>
+</div>

@@ -1,0 +1,56 @@
+---
+import { companies } from '../data/companies';
+
+interface Props {
+  currentSlug: string;
+}
+
+const { currentSlug } = Astro.props;
+---
+
+<div class="company-switcher">
+  <button
+    type="button"
+    class="switcher-btn"
+    id="switcher-toggle"
+    aria-expanded="false"
+    aria-controls="switcher-dropdown"
+  >
+    Switch company ▾
+  </button>
+  <div class="switcher-dropdown" id="switcher-dropdown">
+    {companies.map(c => (
+      <a
+        href={`/case-studies/${c.slug}/`}
+        class={c.slug === currentSlug ? 'current' : ''}
+      >
+        {c.name}
+      </a>
+    ))}
+  </div>
+</div>
+
+<script>
+  const toggle = document.getElementById('switcher-toggle');
+  const dropdown = document.getElementById('switcher-dropdown');
+
+  toggle?.addEventListener('click', () => {
+    const open = dropdown?.classList.toggle('open') ?? false;
+    toggle.setAttribute('aria-expanded', String(open));
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!toggle?.contains(e.target as Node) && !dropdown?.contains(e.target as Node)) {
+      dropdown?.classList.remove('open');
+      toggle?.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      dropdown?.classList.remove('open');
+      toggle?.setAttribute('aria-expanded', 'false');
+      toggle?.focus();
+    }
+  });
+</script>

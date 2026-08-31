@@ -1,0 +1,29 @@
+---
+import type { Company } from '../data/types';
+
+interface Props {
+  company: Company;
+}
+
+const { company } = Astro.props;
+---
+
+<a href={`/case-studies/${company.slug}/`} class="case-card">
+  <div class="case-card__logo-panel">
+    <img
+      src={company.logo}
+      alt=""
+      class="case-card__logo"
+      loading="lazy"
+    />
+  </div>
+  <div class="case-card__body">
+    <span class="case-card__industry">{company.industry}</span>
+    <h3 class="case-card__name">{company.name}</h3>
+    <p class="case-card__description">{company.description}</p>
+    <div class="case-card__footer">
+      <span>{company.totalInitiatives} initiatives</span>
+      <span aria-hidden="true">View case &rarr;</span>
+    </div>
+  </div>
+</a>

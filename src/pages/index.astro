@@ -1,503 +1,328 @@
 ---
 import Base from '../layouts/Base.astro';
+import CompanyCard from '../components/CompanyCard.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import { featuredCompanies } from '../data/companies';
+import { testimonials } from '../data/testimonials';
+
+const capabilities = [
+  {
+    title: 'ERP & finance systems',
+    description: 'Selection, implementation, integration, and operating discipline across core transaction systems.',
+  },
+  {
+    title: 'CRM & commercial operations',
+    description: 'Pipeline, quoting, customer service, and revenue workflows designed around how teams actually sell.',
+  },
+  {
+    title: 'Enterprise systems',
+    description: 'HRIS, collaboration, identity, service management, and the connective tissue between functions.',
+  },
+  {
+    title: 'Infrastructure & security',
+    description: 'Networks, cloud, resilience, identity, physical security, and the controls required to operate safely.',
+  },
+  {
+    title: 'IoT & operational technology',
+    description: 'Sensors, telemetry, PLC automation, geospatial systems, and predictive maintenance in the physical estate.',
+  },
+  {
+    title: 'BI, data & decision systems',
+    description: 'Trusted metrics, integrated data flows, dashboards, and decision cadences that change management behaviour.',
+  },
+  {
+    title: 'Automation & process redesign',
+    description: 'Workflow simplification first; automation second. Less reconciliation, faster cycle times, clearer ownership.',
+  },
+  {
+    title: 'AI & proprietary technology',
+    description: 'AI readiness, deployment, model and data risk, agentic workflows, and durable product advantage.',
+  },
+  {
+    title: 'Operating-model transformation',
+    description: 'Team design, governance, vendor structure, capability transfer, and a system the internal organisation can own.',
+  },
+];
+
+const ddDimensions = [
+  'Architecture & infrastructure',
+  'Team & organisation',
+  'Security & compliance',
+  'Data & analytics',
+  'AI & proprietary technology',
+  'Cost structure',
+  'Delivery capability',
+  'Strategic alignment & bolt-on readiness',
+];
 ---
 
 <Base
-  title="Valepath — Technology Due Diligence for PE Transactions"
-  description="Structured technology assessment for PE-backed transactions. Quantified risk scoring, cost-to-fix estimates, and value creation roadmaps in 10–15 days."
+  title="Valepath — Technology Transformation, 2013–Present"
+  description="Valepath assesses technology, deploys the fix, and transfers durable capability across enterprise systems, infrastructure, data, automation, AI, and technology due diligence."
 >
   <div class="page">
+    <SiteHeader />
 
-    <!-- Header -->
-    <header class="header">
-      <div class="header__brand">Valepath</div>
-      <button
-        type="button"
-        class="nav-toggle"
-        aria-label="Toggle navigation menu"
-        aria-expanded="false"
-        aria-controls="primary-nav"
-      >
-        <span class="nav-toggle__bar"></span>
-        <span class="nav-toggle__bar"></span>
-        <span class="nav-toggle__bar"></span>
-      </button>
-      <nav class="header__nav" id="primary-nav">
-        <a href="#engagements">Engagements</a>
-        <a href="#framework">Framework</a>
-        <a href="#deliverables">Deliverables</a>
-        <a href="#track-record">Track Record</a>
-        <a href="#about">About</a>
-        <a href="#contact" class="nav-cta">Get in Touch</a>
-      </nav>
-    </header>
-    <script is:inline>
-      (() => {
-        const toggle = document.querySelector('.nav-toggle');
-        const nav = document.getElementById('primary-nav');
-        if (!toggle || !nav) return;
-        const close = () => {
-          toggle.setAttribute('aria-expanded', 'false');
-          nav.classList.remove('is-open');
-        };
-        toggle.addEventListener('click', () => {
-          const open = toggle.getAttribute('aria-expanded') === 'true';
-          toggle.setAttribute('aria-expanded', String(!open));
-          nav.classList.toggle('is-open', !open);
-        });
-        nav.querySelectorAll('a').forEach((a) => a.addEventListener('click', close));
-        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
-      })();
-    </script>
+    <main>
+      <section class="hero">
+        <p class="hero__eyebrow">Technology transformation &middot; 2013&ndash;present</p>
+        <h1>Assess. Deploy. Transfer.</h1>
+        <p class="hero__lead">
+          Valepath enters when technology is material to the outcome: before an acquisition, during a transformation, or when systems no longer serve the business. We diagnose the estate, build the fix, and leave the organisation able to run it.
+        </p>
+        <div class="hero__offer">
+          ERP &middot; CRM &middot; enterprise systems &middot; infrastructure &middot; IoT &middot; BI &amp; data &middot; automation &middot; AI &middot; technology due diligence
+        </div>
+        <div class="hero__ctas">
+          <a href="/case-studies/" class="btn">See the transformation record &rarr;</a>
+          <a href="#contact" class="btn btn--secondary">Discuss an engagement</a>
+        </div>
+      </section>
 
-    <!-- Hero -->
-    <section class="hero">
-      <h1>Technology due diligence for PE transactions.</h1>
-      <p class="hero__lead">
-        Quantified risk scoring, phased cost-to-fix estimates, and IC-ready value creation roadmaps. Delivered in 10&ndash;15 working days.
-      </p>
-      <div class="hero__offer">
-        Most technology DD tells an Investment Committee the architecture has technical debt. Ours tells them it&rsquo;s &pound;2.4M to remediate over 18 months with a 3.2x ROI.
-      </div>
-      <div class="hero__ctas">
-        <a href="#contact" class="btn">Schedule a Conversation &rarr;</a>
-        <a href="/sample-dd-report.pdf" class="btn btn--secondary" download>Download Sample Report &darr;</a>
-      </div>
-    </section>
+      <section class="proof-strip" aria-label="Valepath track record">
+        <div class="proof-stat">
+          <span class="proof-stat__value">2013&ndash;present</span>
+          <span class="proof-stat__label">Continuous practice</span>
+        </div>
+        <div class="proof-stat">
+          <span class="proof-stat__value">80+</span>
+          <span class="proof-stat__label">Initiatives</span>
+        </div>
+        <div class="proof-stat">
+          <span class="proof-stat__value">9</span>
+          <span class="proof-stat__label">Industries</span>
+        </div>
+        <div class="proof-stat">
+          <span class="proof-stat__value">$5M&ndash;$300M+</span>
+          <span class="proof-stat__label">Company revenue</span>
+        </div>
+      </section>
 
-    <!-- Engagements -->
-    <section class="section section--alt" id="engagements">
-      <h2>Engagements</h2>
-      <p>Three buying surfaces, mapped to deal-cycle moments. Engagements scoped against deal size, target complexity, and timeline.</p>
+      <section class="section section--alt" id="engagements">
+        <p class="section-kicker">Engagements</p>
+        <h2>One practice, three modes.</h2>
+        <p class="section-lead">
+          The work can stop at a decision, continue through implementation, or carry through to a self-sufficient internal team. Scope follows the outcome, not a fixed consulting package.
+        </p>
 
-      <h3>When to Engage</h3>
-      <div class="when-grid">
-        <div class="when-card">
-          <span class="when-stage">Pre-LOI</span>
-          <span class="when-trigger">Initial technology screen on a target before committing to full diligence spend.</span>
+        <div class="mode-grid">
+          <article class="mode-card">
+            <span class="mode-card__number">01</span>
+            <h3>Assess</h3>
+            <p>Establish what is true, what is material, and what it will cost to change.</p>
+            <ul>
+              <li>Enterprise technology assessment</li>
+              <li>Technology due diligence</li>
+              <li>Architecture, security, data, and AI risk</li>
+              <li>Cost-to-fix and value-creation roadmap</li>
+            </ul>
+          </article>
+          <article class="mode-card mode-card--featured">
+            <span class="mode-card__number">02</span>
+            <h3>Deploy</h3>
+            <p>Build the operating change, not merely the recommendation.</p>
+            <ul>
+              <li>ERP, CRM, and enterprise systems</li>
+              <li>Infrastructure, IoT, and operational technology</li>
+              <li>BI, data, workflow automation, and AI</li>
+              <li>Programme leadership and benefits realisation</li>
+            </ul>
+          </article>
+          <article class="mode-card">
+            <span class="mode-card__number">03</span>
+            <h3>Transfer</h3>
+            <p>Make the new capability durable inside the organisation.</p>
+            <ul>
+              <li>Operating model and governance</li>
+              <li>Team, vendor, and ownership design</li>
+              <li>Documentation, training, and handover</li>
+              <li>Metrics and management cadence</li>
+            </ul>
+          </article>
         </div>
-        <div class="when-card">
-          <span class="when-stage">In Diligence</span>
-          <span class="when-trigger">Full 8-dimension assessment with quantified risk, cost-to-fix, and IC-ready deliverables.</span>
-        </div>
-        <div class="when-card">
-          <span class="when-stage">AI / IP Risk</span>
-          <span class="when-trigger">Targeted assessment of AI moat, training-data provenance, and EU AI Act exposure.</span>
-        </div>
-        <div class="when-card">
-          <span class="when-stage">Bolt-on Readiness</span>
-          <span class="when-trigger">Integration-readiness assessment ahead of platform consolidation or acquisition.</span>
-        </div>
-        <div class="when-card">
-          <span class="when-stage">Post-Close</span>
-          <span class="when-trigger">100-day technology execution blueprint for portfolio operating partners.</span>
-        </div>
-      </div>
+      </section>
 
-      <h3>Tiers</h3>
-      <div class="tiers-grid">
-        <div class="tier-card">
-          <div class="tier-card__header">
-            <strong>Pre-LOI Tech Risk Screen</strong>
-            <span class="tier-card__price">from &pound;5K</span>
+      <section class="section" id="capabilities">
+        <p class="section-kicker">Capabilities</p>
+        <h2>Technology in the service of operations.</h2>
+        <p class="section-lead">
+          The practice spans the full enterprise estate. AI is now an important layer within that estate; it does not replace the systems, data, process, and operating discipline beneath it.
+        </p>
+        <div class="capability-grid">
+          {capabilities.map((capability, index) => (
+            <article class="capability-card">
+              <span class="capability-card__index">{String(index + 1).padStart(2, '0')}</span>
+              <h3>{capability.title}</h3>
+              <p>{capability.description}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section class="section section--alt" id="method">
+        <p class="section-kicker">Method</p>
+        <h2>The recommendation and the implementation remain connected.</h2>
+        <div class="method-flow">
+          <article>
+            <span>Assess</span>
+            <h3>Find the constraint</h3>
+            <p>Interviews, system and data review, frontline observation, risk ranking, economics, and a decision-ready baseline.</p>
+          </article>
+          <div class="method-flow__arrow" aria-hidden="true">&rarr;</div>
+          <article>
+            <span>Deploy</span>
+            <h3>Change the system</h3>
+            <p>A sequenced programme with named owners, measurable outcomes, controlled dependencies, and working technology.</p>
+          </article>
+          <div class="method-flow__arrow" aria-hidden="true">&rarr;</div>
+          <article>
+            <span>Transfer</span>
+            <h3>Leave capability behind</h3>
+            <p>Internal ownership, operating cadence, documentation, training, and evidence that the result survives the engagement.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="track-record">
+        <div class="section-heading-row">
+          <div>
+            <p class="section-kicker">Transformation record</p>
+            <h2>Substantive work, not capability theatre.</h2>
           </div>
-          <div class="tier-card__meta">
-            <span>2&ndash;3 working days</span>
-            <span>Pre-LOI &middot; Early triage</span>
-          </div>
-          <ul class="tier-card__list">
-            <li>Architecture, security, and AI red-flag scan</li>
-            <li>Top-3 deal-breaker risks identified</li>
-            <li>Two-page go / no-go memo</li>
-            <li>Optional scope and quote for full DD</li>
-          </ul>
+          <a href="/case-studies/" class="text-link">All 9 case studies &rarr;</a>
         </div>
-
-        <div class="tier-card tier-card--feature">
-          <div class="tier-card__header">
-            <span class="tier-card__badge">Flagship</span>
-            <strong>Full Technology DD</strong>
-            <span class="tier-card__price">from &pound;18K</span>
-          </div>
-          <div class="tier-card__meta">
-            <span>10&ndash;15 working days</span>
-            <span>Full assessment for IC</span>
-          </div>
-          <ul class="tier-card__list">
-            <li>8-dimension assessment with peer-benchmarked scoring</li>
-            <li>Phased cost-to-fix in GBP, with confidence intervals</li>
-            <li>Deal structuring implications: price adjustment, escrow, reps &amp; warranties</li>
-            <li>First 100-day operational plan</li>
-            <li>IC-ready PDF and executive summary</li>
-          </ul>
+        <p class="section-lead">
+          Selected company-wide transformations across hospitality, construction, real estate, education, utilities, smart communities, and public services.
+        </p>
+        <div class="featured-cases">
+          {featuredCompanies.map((company) => <CompanyCard company={company} />)}
         </div>
-
-        <div class="tier-card">
-          <div class="tier-card__header">
-            <strong>Post-Close 100-Day Plan</strong>
-            <span class="tier-card__price">from &pound;25K</span>
+        <div class="outcome-grid">
+          <div class="outcome">
+            <span class="outcome__metric">+18% NOI</span>
+            <span>Resort transformation spanning systems, operations, people, and guest experience.</span>
           </div>
-          <div class="tier-card__meta">
-            <span>2&ndash;3 weeks</span>
-            <span>Value creation execution</span>
+          <div class="outcome">
+            <span class="outcome__metric">0 hours</span>
+            <span>Unplanned downtime after industrial PLC and monitoring automation.</span>
           </div>
-          <ul class="tier-card__list">
-            <li>Week-by-week workstream plan, owner-assigned</li>
-            <li>KPI baselines and dashboard scoping</li>
-            <li>Tech steering committee setup</li>
-            <li>Quick-win cost actions: cloud, licences, vendor consolidation</li>
-          </ul>
+          <div class="outcome">
+            <span class="outcome__metric">&minus;75%</span>
+            <span>Data synchronisation and reporting time after PMS/ERP integration.</span>
+          </div>
+          <div class="outcome">
+            <span class="outcome__metric">99.8%</span>
+            <span>Network uptime across a distributed operating estate.</span>
+          </div>
         </div>
-      </div>
+      </section>
 
-      <p class="tier-note">Pricing indicative. Firm quote follows a 30-minute scoping call.</p>
-    </section>
-
-    <!-- Framework -->
-    <section class="section" id="framework">
-      <h2>Assessment Framework</h2>
-      <p>Eight dimensions, each producing a standardised 1&ndash;5 score against peer benchmarks and a quantified financial estimate.</p>
-      <table class="scorecard">
-        <thead>
-          <tr>
-            <th></th>
-            <th>Dimension</th>
-            <th>What we assess</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><span class="dim-num">1</span></td>
-            <td>Architecture & Infrastructure</td>
-            <td>Cloud maturity, system topology, technical debt, scalability ceiling, SPOFs</td>
-          </tr>
-          <tr>
-            <td><span class="dim-num">2</span></td>
-            <td>Team & Organisation</td>
-            <td>Headcount, composition, key-person risk, outsourcing mix, hiring feasibility</td>
-          </tr>
-          <tr>
-            <td><span class="dim-num">3</span></td>
-            <td>Security & Compliance</td>
-            <td>OWASP exposure, SOC 2 readiness, GDPR/NIS2 posture, incident history</td>
-          </tr>
-          <tr>
-            <td><span class="dim-num">4</span></td>
-            <td>Data & Analytics</td>
-            <td>Quality, governance, integration health, privacy, master data</td>
-          </tr>
-          <tr>
-            <td><span class="dim-num">5</span></td>
-            <td>AI & Proprietary Technology</td>
-            <td>Model portfolio, IP governance, training-data provenance, EU AI Act exposure, moat durability</td>
-          </tr>
-          <tr>
-            <td><span class="dim-num">6</span></td>
-            <td>Cost Structure</td>
-            <td>Total spend analysis, cloud optimisation, licence audit, cost-to-fix estimate</td>
-          </tr>
-          <tr>
-            <td><span class="dim-num">7</span></td>
-            <td>Delivery Capability</td>
-            <td>DORA metrics, CI/CD maturity, QA practices, AI engineering leverage, backlog health</td>
-          </tr>
-          <tr>
-            <td><span class="dim-num">8</span></td>
-            <td>Strategic Alignment & Bolt-on Readiness</td>
-            <td>Roadmap fit, multi-tenancy & integration readiness, competitive moat, exit attractiveness</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
-
-    <!-- Deliverables -->
-    <section class="section section--alt" id="deliverables">
-      <h2>Deliverables</h2>
-      <p>Every engagement produces six artefacts, designed for direct use in IC materials and for the deal team post-close.</p>
-
-      <div class="deliverables-stack">
-        <!-- Risk Scorecard -->
-        <div class="deliverable-card">
-          <div class="deliverable-card__header">
-            <strong>Risk Scorecard</strong>
-            <span class="deliverable-card__tag">Standardised &middot; Comparable across deals</span>
-          </div>
-          <div class="sample-scorecard">
-            <div class="sample-row">
-              <span class="sample-dim">Architecture</span>
-              <div class="sample-bar"><div class="sample-fill" style="width: 80%;"></div></div>
-              <span class="sample-score">4/5</span>
-            </div>
-            <div class="sample-row">
-              <span class="sample-dim">Team</span>
-              <div class="sample-bar"><div class="sample-fill" style="width: 60%;"></div></div>
-              <span class="sample-score">3/5</span>
-            </div>
-            <div class="sample-row sample-row--alert">
-              <span class="sample-dim">Security</span>
-              <div class="sample-bar"><div class="sample-fill sample-fill--alert" style="width: 40%;"></div></div>
-              <span class="sample-score">2/5</span>
-            </div>
-            <div class="sample-row">
-              <span class="sample-dim">Data</span>
-              <div class="sample-bar"><div class="sample-fill" style="width: 80%;"></div></div>
-              <span class="sample-score">4/5</span>
-            </div>
-            <div class="sample-row">
-              <span class="sample-dim">AI & Proprietary</span>
-              <div class="sample-bar"><div class="sample-fill" style="width: 60%;"></div></div>
-              <span class="sample-score">3/5</span>
-            </div>
-            <div class="sample-row">
-              <span class="sample-dim">Cost</span>
-              <div class="sample-bar"><div class="sample-fill" style="width: 60%;"></div></div>
-              <span class="sample-score">3/5</span>
-            </div>
-            <div class="sample-row">
-              <span class="sample-dim">Delivery</span>
-              <div class="sample-bar"><div class="sample-fill" style="width: 80%;"></div></div>
-              <span class="sample-score">4/5</span>
-            </div>
-            <div class="sample-row">
-              <span class="sample-dim">Strategic & Bolt-on</span>
-              <div class="sample-bar"><div class="sample-fill" style="width: 60%;"></div></div>
-              <span class="sample-score">3/5</span>
-            </div>
-            <div class="sample-row sample-row--composite">
-              <span class="sample-dim">Composite</span>
-              <div class="sample-bar"><div class="sample-fill" style="width: 65%;"></div></div>
-              <span class="sample-score">3.25/5</span>
+      <section class="section section--alt" id="due-diligence">
+        <div class="dd-grid">
+          <div>
+            <p class="section-kicker">One engagement type</p>
+            <h2>Technology due diligence.</h2>
+            <p class="section-lead">
+              When the decision is an acquisition, Valepath converts technical findings into investment consequences: quantified risk, phased cost-to-fix, first-100-day priorities, and deal-structuring implications.
+            </p>
+            <div class="hero__ctas">
+              <a href="/sample-dd-report.pdf" class="btn" download>Download sample report &darr;</a>
+              <a href="#contact" class="btn btn--secondary">Discuss a transaction</a>
             </div>
           </div>
+          <ol class="dimension-list">
+            {ddDimensions.map((dimension, index) => (
+              <li><span>{index + 1}</span>{dimension}</li>
+            ))}
+          </ol>
         </div>
+      </section>
 
-        <!-- Cost-to-Fix -->
-        <div class="deliverable-card">
-          <div class="deliverable-card__header">
-            <strong>Cost-to-Fix Estimate</strong>
-            <span class="deliverable-card__tag">Quantified in GBP &middot; Phased &middot; Confidence intervals</span>
-          </div>
-          <table class="sample-table">
-            <thead>
-              <tr><th>Phase</th><th>Initiatives</th><th>Investment</th><th>Timeline</th><th>ROI</th></tr>
-            </thead>
-            <tbody>
-              <tr><td>P1: Quick wins</td><td>5</td><td>&pound;320K</td><td>0&ndash;3 months</td><td>Protects &pound;3.1M ARR</td></tr>
-              <tr><td>P2: Foundation</td><td>6</td><td>&pound;1.20M</td><td>3&ndash;12 months</td><td>Unlocks bolt-on thesis</td></tr>
-              <tr><td>P3: Optimisation</td><td>3</td><td>&pound;580K</td><td>12&ndash;24 months</td><td>Platform-grade profile</td></tr>
-              <tr class="sample-total"><td>Total</td><td>12</td><td>&pound;2.10M</td><td></td><td>~&pound;11M value protected / unlocked</td></tr>
-            </tbody>
-          </table>
+      <section class="section" id="references">
+        <p class="section-kicker">Operator references</p>
+        <h2>Trusted at the point of execution.</h2>
+        <div class="testimonials">
+          {testimonials.map((testimonial) => (
+            <blockquote class="testimonial">
+              <p>&ldquo;{testimonial.quote}&rdquo;</p>
+              <cite>{testimonial.name} &middot; {testimonial.title}</cite>
+            </blockquote>
+          ))}
         </div>
+      </section>
 
-        <!-- Full DD Report -->
-        <div class="deliverable-card deliverable-card--download">
-          <div class="deliverable-card__header">
-            <strong>Full Due Diligence Report</strong>
-            <span class="deliverable-card__tag">14 sections &middot; 8 dimensions &middot; IC-ready PDF</span>
+      <section class="section section--alt" id="about">
+        <p class="section-kicker">About</p>
+        <div class="about-grid">
+          <div>
+            <h2>A continuous transformation practice.</h2>
+            <p>
+              Valepath is the practice through which Pedro Rivera Torres Moir has assessed, built, and transferred technology-led operating change since 2013. Its record spans 80+ initiatives across nine industries and companies ranging from $5M to $300M+ in annual revenue.
+            </p>
+            <p>
+              Engagements are defined by a material operating outcome. The practice combines executive accountability with enough technical depth to move from board-level decision to deployed system without losing the thread between them.
+            </p>
           </div>
-          <div class="deliverable-card__body">
-            <p>The complete deliverable: executive summary, 100-day plan, eight dimension assessments with peer-benchmarked scoring, risk scorecard, phased cost-to-fix, and deal structuring implications.</p>
-            <p>Review an illustrative sample prepared for a fictional London mid-market LegalTech target.</p>
-            <a href="/sample-dd-report.pdf" class="btn" download>Download Sample Report (PDF) &darr;</a>
-          </div>
-        </div>
-
-        <!-- Executive Summary -->
-        <div class="deliverable-card">
-          <div class="deliverable-card__header">
-            <strong>Executive Summary</strong>
-            <span class="deliverable-card__tag">2 pages &middot; IC-ready &middot; Go/no-go recommendation</span>
-          </div>
-          <div class="sample-summary">
-            <div class="summary-verdict summary-verdict--go">RECOMMENDATION: GO WITH CONDITIONS</div>
-            <p class="summary-text">Technology is a net enabler of the platform thesis, with a credible AI moat (18&ndash;24 month lead). Three material issues: (1) no SOC 2 Type II &mdash; 14% of ARR at contractual risk, (2) AI model training-data provenance undocumented &mdash; potential IP contamination, (3) multi-tenancy hard-coded &mdash; blocks efficient bolt-on integration. Total cost-to-fix: &pound;2.10M over 24 months. Recommended price adjustment: &minus;&pound;3.0M with &pound;1.5M escrow milestone-released over 18 months.</p>
+          <div>
+            <h3>Pedro Rivera Torres Moir</h3>
+            <p>
+              Founder &amp; Principal. Technology operator across enterprise systems, infrastructure, data, AI, and company-wide transformation. B.S. Electrical &amp; Computer Engineering, University of Colorado Boulder; Advanced Project Management, Stanford. Based in Madrid, working across Europe and North America. EU, US, and Mexico citizen.
+            </p>
+            <a href="https://pedrortm.com" target="_blank" rel="noopener" class="text-link">Full profile at pedrortm.com &rarr;</a>
           </div>
         </div>
+      </section>
 
-        <!-- First 100 Days Plan -->
-        <div class="deliverable-card">
-          <div class="deliverable-card__header">
-            <strong>First 100 Days &mdash; Operational Plan</strong>
-            <span class="deliverable-card__tag">Week-by-week &middot; Owner-assigned &middot; KPI baselines</span>
-          </div>
-          <table class="sample-table">
-            <thead>
-              <tr><th>Window</th><th>Workstream</th><th>Outcome</th></tr>
-            </thead>
-            <tbody>
-              <tr><td>Days 1&ndash;14</td><td>Security</td><td>SOC 2 readiness assessment; pentest scheduled</td></tr>
-              <tr><td>Days 14&ndash;30</td><td>Cost</td><td>Cloud and licence audit &mdash; &pound;200K+ savings identified</td></tr>
-              <tr><td>Days 30&ndash;60</td><td>Compliance</td><td>GDPR / DSR automation deployed; DACH retention secured</td></tr>
-              <tr><td>Days 60&ndash;90</td><td>Architecture</td><td>Bolt-on integration refactor scoped and costed</td></tr>
-              <tr><td>Days 90&ndash;100</td><td>Governance</td><td>Tech steering committee; KPI dashboard live</td></tr>
-            </tbody>
-          </table>
+      <section class="section" id="contact">
+        <p class="section-kicker">Contact</p>
+        <h2>Bring the operating problem.</h2>
+        <p class="section-lead">
+          For a technology assessment, a transformation that must reach production, or a transaction where the technology thesis needs to be quantified. A brief description of the organisation, the decision, and the timeline is sufficient to begin.
+        </p>
+        <div class="contact-block">
+          <a href="mailto:pedro&#64;valepath.com" class="contact-email">pedro&#64;valepath.com</a>
+          <button
+            type="button"
+            class="copy-email"
+            data-u="pedro"
+            data-d="valepath.com"
+            aria-label="Copy contact email to clipboard"
+          >
+            <span class="copy-email__default">Copy</span>
+            <span class="copy-email__done" aria-hidden="true">Copied &check;</span>
+          </button>
         </div>
+        <div class="contact-row">
+          <a href="https://linkedin.com/in/pedrortm" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://pedrortm.com" target="_blank" rel="noopener">pedrortm.com</a>
+        </div>
+      </section>
+    </main>
 
-        <!-- Deal Structuring Implications -->
-        <div class="deliverable-card">
-          <div class="deliverable-card__header">
-            <strong>Deal Structuring Implications</strong>
-            <span class="deliverable-card__tag">SPA-ready reps &middot; Escrow milestones &middot; Price adjustment</span>
-          </div>
-          <table class="sample-table">
-            <thead>
-              <tr><th>Lever</th><th>Recommendation</th></tr>
-            </thead>
-            <tbody>
-              <tr><td>Price adjustment</td><td>&minus;&pound;3.0M from ask &mdash; itemised against ARR-at-risk and certain remediation</td></tr>
-              <tr><td>Escrow</td><td>&pound;1.5M / 18 months, milestone-released against SOC 2 and AI provenance audit</td></tr>
-              <tr><td>Reps & warranties</td><td>Enhanced: IP / training-data provenance, cybersecurity, AI regulatory compliance</td></tr>
-              <tr><td>Earnout</td><td>&pound;4.0M cap tied to ARR growth, DACH segment, AI tier adoption</td></tr>
-              <tr><td>Management retention</td><td>Founder-CTO lockup + knowledge-transfer milestones; AI team pool</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <a href="#contact" class="btn" style="margin-top: var(--sp-5);">Discuss Your Next Deal &rarr;</a>
-    </section>
-
-    <!-- Track Record -->
-    <section class="section" id="track-record">
-      <h2>Track Record</h2>
-      <p>Built on 13 years of entering companies, assessing their technology, building the fix, and handing off to internal teams.</p>
-      <div class="stats-row">
-        <div class="stat">
-          <div class="stat__value">80+</div>
-          <div class="stat__label">Assessments</div>
-        </div>
-        <div class="stat">
-          <div class="stat__value">9</div>
-          <div class="stat__label">Industries</div>
-        </div>
-        <div class="stat">
-          <div class="stat__value">4</div>
-          <div class="stat__label">ERP implementations</div>
-        </div>
-        <div class="stat">
-          <div class="stat__value">$5M&ndash;$300M+</div>
-          <div class="stat__label">Portfolio revenue</div>
-        </div>
-      </div>
-      <div class="highlights">
-        <div class="highlight">
-          <span class="highlight__metric">+18% NOI</span>
-          <span class="highlight__desc">Technology-driven value creation at a 285-room resort &mdash; 14 initiatives assessed and delivered</span>
-        </div>
-        <div class="highlight">
-          <span class="highlight__metric">0 hrs unplanned downtime</span>
-          <span class="highlight__desc">Industrial PLC automation for water-treatment plant &mdash; critical infrastructure reliability</span>
-        </div>
-        <div class="highlight">
-          <span class="highlight__metric">5M+ items indexed</span>
-          <span class="highlight__desc">Production AI infrastructure &mdash; RAG pipelines, vector databases, LLM APIs</span>
-        </div>
-        <div class="highlight">
-          <span class="highlight__metric">&ndash;25% maintenance costs</span>
-          <span class="highlight__desc">IoT predictive maintenance &mdash; 90% of potential failures identified before occurrence</span>
-        </div>
-      </div>
-      <p style="margin-top: var(--sp-4);">
-        Full portfolio: <a href="https://velkan.io/case-studies/" target="_blank" rel="noopener">velkan.io/case-studies</a>
-      </p>
-    </section>
-
-    <!-- Operator References -->
-    <section class="section section--alt" id="references">
-      <h2>Operator References</h2>
-      <p>References from operators and founders Pedro has worked with directly. PE deal-side references available on request.</p>
-      <div class="testimonials">
-        <blockquote class="testimonial">
-          <p>&ldquo;Pedro excels at executing highly technical projects, asking the right questions and inspiring the team with a deep sense of focus and purpose.&rdquo;</p>
-          <cite>Itamar Leizorek, CEO, Noxgen Biotech</cite>
-        </blockquote>
-        <blockquote class="testimonial">
-          <p>&ldquo;He has a remarkable ability to foresee industry trends and identify strategic opportunities that others may overlook.&rdquo;</p>
-          <cite>Jeronimo Mohar, Founder & CEO, Aleph RI</cite>
-        </blockquote>
-        <blockquote class="testimonial">
-          <p>&ldquo;An excellent track record of building and leading high-performance technical teams to develop and implement software and data solutions.&rdquo;</p>
-          <cite>Daniel Servitje, Co-Founder & CEO</cite>
-        </blockquote>
-      </div>
-    </section>
-
-    <!-- About -->
-    <section class="section" id="about">
-      <h2>About</h2>
-      <div class="about-grid">
-        <div>
-          <h3>The Practice</h3>
-          <p>Valepath provides structured technology due diligence for PE-backed transactions. Every assessment follows a standardised 8-dimension framework &mdash; including a distinct AI &amp; proprietary technology assessment and bolt-on integration readiness &mdash; producing peer-benchmarked risk scores and financial estimates designed to be lifted directly into an IC memo. We work with mid-market PE firms on deals where technology is a material factor in the investment thesis.</p>
-          <p>Engagements are led by Pedro Rivera, with specialist security, cloud, AI, and engineering diligence support brought in where required.</p>
-        </div>
-        <div>
-          <h3>Pedro Rivera Torres Moir</h3>
-          <p>Founder &amp; Principal. B.S. Electrical &amp; Computer Engineering (CU Boulder), Advanced Project Management (Stanford). Previously: Founder &amp; CTO of Velkan (80+ technology transformations, 2012&ndash;2020), Co-Founder &amp; CEO of Waffle (AI platform, 5M+ items), Co-Founder of Abraxas (venture builder, $150M+ portfolio). EU, US, MX citizen. London-focused.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact -->
-    <section class="section section--alt" id="contact">
-      <h2>Get in Touch</h2>
-      <p>If you need technology risk quantified before a deal closes, or a value creation roadmap for a portfolio company. A brief description of the deal and timeline gets a same-day response.</p>
-      <div class="contact-block">
-        <a href="mailto:pedro&#64;valepath.com" class="contact-email">pedro&#64;valepath.com</a>
-        <button
-          type="button"
-          class="copy-email"
-          data-u="pedro"
-          data-d="valepath.com"
-          aria-label="Copy contact email to clipboard"
-        >
-          <span class="copy-email__default">Copy</span>
-          <span class="copy-email__done" aria-hidden="true">Copied &check;</span>
-        </button>
-      </div>
-      <div class="contact-row">
-        <a href="https://linkedin.com/in/pedrortm" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="https://pedrortm.com" target="_blank" rel="noopener">pedrortm.com</a>
-      </div>
-      <script is:inline>
-        document.querySelectorAll('.copy-email').forEach((btn) => {
-          btn.addEventListener('click', async () => {
-            const email = `${btn.dataset.u}\u0040${btn.dataset.d}`;
-            try {
-              await navigator.clipboard.writeText(email);
-            } catch (err) {
-              const ta = document.createElement('textarea');
-              ta.value = email;
-              ta.setAttribute('readonly', '');
-              ta.style.position = 'absolute';
-              ta.style.left = '-9999px';
-              document.body.appendChild(ta);
-              ta.select();
-              document.execCommand('copy');
-              document.body.removeChild(ta);
-            }
-            btn.classList.add('is-copied');
-            setTimeout(() => btn.classList.remove('is-copied'), 1800);
-          });
-        });
-      </script>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-      <div class="footer__col">
-        <span>&copy; 2026 Valepath</span>
-        <span class="footer__sep">&middot;</span>
-        <span>London</span>
-      </div>
-      <div class="footer__col">
-        <a href="#framework">Framework</a>
-        <a href="/sample-dd-report.pdf" download>Sample Report</a>
-        <a href="#contact">Contact</a>
-      </div>
-    </footer>
-
+    <SiteFooter />
   </div>
+
+  <script>
+    document.querySelectorAll<HTMLButtonElement>('.copy-email').forEach((button) => {
+      button.addEventListener('click', async () => {
+        const email = `${button.dataset.u}\u0040${button.dataset.d}`;
+        try {
+          await navigator.clipboard.writeText(email);
+        } catch {
+          const textArea = document.createElement('textarea');
+          textArea.value = email;
+          textArea.setAttribute('readonly', '');
+          textArea.style.position = 'absolute';
+          textArea.style.left = '-9999px';
+          document.body.appendChild(textArea);
+          textArea.select();
+          document.execCommand('copy');
+          textArea.remove();
+        }
+        button.classList.add('is-copied');
+        window.setTimeout(() => button.classList.remove('is-copied'), 1800);
+      });
+    });
+  </script>
 </Base>

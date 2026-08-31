@@ -1,0 +1,57 @@
+import type { Company } from '../types';
+
+export const centroNovatec: Company = {
+  id: 'centro_novatec',
+  slug: 'centro-novatec',
+  name: 'Centro Novatec',
+  industry: 'Mixed Use Development',
+  description: 'Mixed-use commercial development revitalized from near-vacant to full occupancy through repositioning and operational innovation.',
+  title: 'Company-Wide Transformation',
+  subtitle: 'Mixed-use development and F&B innovation',
+  logo: '/images/Org-Centro Novatec.png',
+  image: null,
+  website: 'https://edico.mx/centro-novatec/',
+  totalInitiatives: 5,
+  initiatives: [
+    {
+      title: 'Public-Space Remodel & Re-Purpose',
+      description: 'Redesigned all key common areas on an ultra-lean budget, converting under-used zones into revenue-generating coworking, event, and retail spaces.',
+      impact: 'Drove a 45% YoY revenue jump and raised average dwell time per visitor by 30%.',
+      toolIds: ['autodesk_revit', 'htc_vive', 'revit_live'],
+      metrics: [{ title: 'Revenue Increase', value: '45', suffix: '%', description: 'Annual gross revenue growth', isStarMetric: true }],
+      domains: ['operations', 'product', 'growth'],
+    },
+    {
+      title: 'Lease-Up Acceleration Program',
+      description: 'Executed targeted outreach, incentives, and space-as-a-service packaging that took occupancy from 2% to 100% after a decade of stagnation.',
+      impact: 'Generated MXN 5M in new annual rent and service fees.',
+      toolIds: ['wordpress', 'google_analytics', 'zendesk'],
+      metrics: [{ title: 'Occupancy Rate', value: '100', suffix: '%', description: 'Lease occupancy after program', isStarMetric: true }],
+      domains: ['growth', 'capital', 'operations'],
+    },
+    {
+      title: 'Dark Kitchen & Subscription Meals',
+      description: 'Piloted a cloud-kitchen with SimplyBook.me ordering, offering fixed-menu subscriptions for tenants and nearby residents.',
+      impact: 'Validated demand and operational model for hyper-local meal subscriptions.',
+      toolIds: ['simplybookme', 'microsoft_teams', 'airtable'],
+      metrics: [{ title: 'Pilot Subscriptions', value: '80+', suffix: '', description: 'Unique subscribers during the pilot phase', isStarMetric: false }],
+      domains: ['product', 'growth', 'operations'],
+    },
+    {
+      title: 'Resident & Tenant Marketing Refresh',
+      description: 'Unified branding and built a multilingual portal bundling leasing, services, and event bookings into one destination.',
+      impact: 'Boosted qualified inbound leads by 65%.',
+      toolIds: ['adobe_illustrator', 'adobe_photoshop', 'wordpress', 'adobe_premiere_pro', 'google_analytics', 'zendesk'],
+      metrics: [{ title: 'Inbound Leads Up', value: '65', suffix: '%', description: 'Growth in qualified enquiries', isStarMetric: false }],
+      domains: ['growth', 'product'],
+    },
+    {
+      title: 'Access Control and Perimeter Security',
+      description: 'Implemented biometric entry, LPR cameras, and panic systems integrated with Genetec to protect residents, staff, and shared spaces.',
+      impact: 'Enabled centralized oversight of all key access points and improved accountability through detailed entry logs.',
+      toolIds: ['2n_intercoms', 'genetec_security_center', 'axis_cameras', 'ubiquiti_unifi'],
+      metrics: [{ title: 'Monitored Access Events', value: '8k+', suffix: '', description: 'Logged access events across 20+ secured entry points', isStarMetric: true }],
+      domains: ['operations'],
+    },
+  ],
+};
