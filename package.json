@@ -5,11 +5,19 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "build:cloudflare": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "cloudflare:status": "/opt/homebrew/opt/node@24/bin/node tools/portfolio-credentials/bin/status.mjs",
+    "cloudflare:enroll": "/opt/homebrew/opt/node@24/bin/node tools/portfolio-credentials/bin/enroll.mjs",
+    "cloudflare:verify": "/opt/homebrew/opt/node@24/bin/node tools/portfolio-credentials/bin/verify.mjs",
+    "cloudflare:deploy": "/opt/homebrew/opt/node@24/bin/node tools/portfolio-credentials/bin/deploy.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.0",
     "astro": "^5.18.0"
+  },
+  "engines": {
+    "node": ">=24"
   }
 }
