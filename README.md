@@ -62,7 +62,7 @@ then inspect the item in Keychain Access: only `/usr/bin/security` may be truste
 
 Authentication and authorization are separate boundaries. `status` reads Keychain
 metadata only; `enroll` is an explicitly authorized attended transfer; `verify` makes
-bounded non-mutating Cloudflare reads; and `cloudflare:deploy` is the only mutating
+bounded non-mutating Cloudflare reads; and `deploy` is the only mutating
 command. Credential availability never authorizes deployment. GitHub Actions builds
 but holds no Cloudflare credential and cannot deploy.
 
@@ -71,7 +71,7 @@ but holds no Cloudflare credential and cannot deploy.
 Run this only when the current task explicitly authorizes production publication:
 
 ```bash
-npm run cloudflare:deploy
+npm run deploy
 ```
 
 The runner proves `HEAD == origin/main ==` the live remote branch, builds the committed

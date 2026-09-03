@@ -11,7 +11,7 @@
     "cloudflare:status": "/opt/homebrew/opt/node@24/bin/node tools/portfolio-credentials/bin/status.mjs",
     "cloudflare:enroll": "/opt/homebrew/opt/node@24/bin/node tools/portfolio-credentials/bin/enroll.mjs",
     "cloudflare:verify": "/opt/homebrew/opt/node@24/bin/node tools/portfolio-credentials/bin/verify.mjs",
-    "cloudflare:deploy": "/opt/homebrew/opt/node@24/bin/node tools/portfolio-credentials/bin/deploy.mjs"
+    "deploy": "/opt/homebrew/opt/node@24/bin/node tools/portfolio-credentials/bin/deploy.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.0",
