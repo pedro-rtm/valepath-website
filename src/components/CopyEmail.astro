@@ -1,0 +1,36 @@
+<button type="button" class="contact-email" aria-live="polite">Copy email</button>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>('button.contact-email').forEach((button) => {
+    let resetTimer: ReturnType<typeof setTimeout>;
+    button.addEventListener('click', async () => {
+      clearTimeout(resetTimer);
+      const local = [111, 114, 100, 101, 112].reverse();
+      const domain = [109, 111, 99, 46, 104, 116, 97, 112, 101, 108, 97, 118].reverse();
+      const email = String.fromCharCode(...local, 64, ...domain);
+      let copied = false;
+      try {
+        await navigator.clipboard.writeText(email);
+        copied = true;
+      } catch {
+        const textArea = document.createElement('textarea');
+        textArea.value = email;
+        textArea.setAttribute('readonly', '');
+        textArea.style.position = 'fixed';
+        textArea.style.opacity = '0';
+        document.body.appendChild(textArea);
+        textArea.select();
+        try {
+          copied = document.execCommand('copy');
+        } catch {
+          copied = false;
+        } finally {
+          textArea.remove();
+          button.focus({ preventScroll: true });
+        }
+      }
+      button.textContent = copied ? 'Copied ✓' : 'Could not copy — try again';
+      resetTimer = setTimeout(() => { button.textContent = 'Copy email'; }, 1800);
+    });
+  });
+</script>

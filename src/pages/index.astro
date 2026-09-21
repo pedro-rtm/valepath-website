@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import CopyEmail from '../components/CopyEmail.astro';
 import CompanyCard from '../components/CompanyCard.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import SiteHeader from '../components/SiteHeader.astro';
@@ -45,16 +46,6 @@ const capabilities = [
   },
 ];
 
-const ddDimensions = [
-  'Architecture & infrastructure',
-  'Team & organisation',
-  'Security & compliance',
-  'Data & analytics',
-  'AI & proprietary technology',
-  'Cost structure',
-  'Delivery capability',
-  'Strategic alignment & bolt-on readiness',
-];
 ---
 
 <Base
@@ -66,10 +57,10 @@ const ddDimensions = [
 
     <main>
       <section class="hero">
-        <p class="hero__eyebrow">Technology transformation &middot; 2013&ndash;present</p>
+        <p class="hero__eyebrow">Technology transformation &amp; due diligence</p>
         <h1>Assess. Deploy. Transfer.</h1>
         <p class="hero__lead">
-          Valepath enters when technology is material to the outcome: before an acquisition, during a transformation, or when systems no longer serve the business. We diagnose the estate, build the fix, and leave the organisation able to run it.
+          Valepath enters when technology is material to the outcome: due diligence before an acquisition, delivery during a transformation, or renewal when systems no longer serve the business. We diagnose the estate, build the fix, and leave the organisation able to run it.
         </p>
         <div class="hero__offer">
           ERP &middot; CRM &middot; enterprise systems &middot; infrastructure &middot; IoT &middot; BI &amp; data &middot; automation &middot; AI &middot; technology due diligence
@@ -143,7 +134,34 @@ const ddDimensions = [
         </div>
       </section>
 
-      <section class="section" id="capabilities">
+      <section class="section" id="due-diligence">
+        <div class="dd-grid">
+          <div>
+            <p class="section-kicker">For investors and acquirers</p>
+            <h2>Technology due diligence.<br />Grounded in execution.</h2>
+            <p class="section-lead">Understand the technology risk behind the acquisition—and what it will take to realise the investment thesis.</p>
+            <p>For PE deal teams, operating partners and strategic acquirers. Technical findings become quantified remediation costs, investment implications and a prioritised post-acquisition plan.</p>
+            <p>Full diligence is scoped around a 10–15 working-day delivery window, subject to target complexity and access to evidence.</p>
+            <div class="hero__ctas">
+              <a href="/technology-due-diligence/" class="btn">Explore technology DD &rarr;</a>
+              <a href="#contact" class="btn btn--secondary">Discuss a transaction</a>
+            </div>
+          </div>
+          <div class="dd-output-summary">
+            <h3>From findings to a decision</h3>
+            <ol class="dimension-list">
+              <li><span>01</span>Material risks across eight assessment dimensions</li>
+              <li><span>02</span>Phased cost-to-fix with assumptions and dependencies</li>
+              <li><span>03</span>Executive conclusions for the investment committee</li>
+              <li><span>04</span>First-100-day priorities and accountable owners</li>
+            </ol>
+            <a href="/sample-dd-report.pdf" class="btn btn--secondary" download>Download sample report &darr;</a>
+            <p class="dd-caption">Illustrative report for a fictional target.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--alt" id="capabilities">
         <p class="section-kicker">Capabilities</p>
         <h2>Technology in the service of operations.</h2>
         <p class="section-lead">
@@ -190,13 +208,15 @@ const ddDimensions = [
             <p class="section-kicker">Transformation record</p>
             <h2>Substantive work, not capability theatre.</h2>
           </div>
-          <a href="/case-studies/" class="text-link">All 9 case studies &rarr;</a>
         </div>
         <p class="section-lead">
           Selected company-wide transformations across hospitality, construction, real estate, education, utilities, smart communities, and public services.
         </p>
         <div class="featured-cases">
-          {featuredCompanies.map((company) => <CompanyCard company={company} />)}
+          {featuredCompanies.slice(0, 2).map((company) => <CompanyCard company={company} />)}
+          <a href="/case-studies/" class="case-card case-card--archive">
+            <h3 class="case-card__name">See more transformations <span aria-hidden="true">&rarr;</span></h3>
+          </a>
         </div>
         <div class="outcome-grid">
           <div class="outcome">
@@ -215,27 +235,6 @@ const ddDimensions = [
             <span class="outcome__metric">99.8%</span>
             <span>Network uptime across a distributed operating estate.</span>
           </div>
-        </div>
-      </section>
-
-      <section class="section section--alt" id="due-diligence">
-        <div class="dd-grid">
-          <div>
-            <p class="section-kicker">One engagement type</p>
-            <h2>Technology due diligence.</h2>
-            <p class="section-lead">
-              When the decision is an acquisition, Valepath converts technical findings into investment consequences: quantified risk, phased cost-to-fix, first-100-day priorities, and deal-structuring implications.
-            </p>
-            <div class="hero__ctas">
-              <a href="/sample-dd-report.pdf" class="btn" download>Download sample report &darr;</a>
-              <a href="#contact" class="btn btn--secondary">Discuss a transaction</a>
-            </div>
-          </div>
-          <ol class="dimension-list">
-            {ddDimensions.map((dimension, index) => (
-              <li><span>{index + 1}</span>{dimension}</li>
-            ))}
-          </ol>
         </div>
       </section>
 
@@ -283,16 +282,7 @@ const ddDimensions = [
         <div class="contact-row">
           <a href="https://linkedin.com/in/pedrortm" target="_blank" rel="noopener">LinkedIn</a>
           <span class="contact-row__separator" aria-hidden="true">&middot;</span>
-          <a href="https://pedrortm.com" target="_blank" rel="noopener">pedrortm.com</a>
-          <span class="contact-row__separator" aria-hidden="true">&middot;</span>
-          <a
-            href="#contact"
-            class="contact-email"
-            aria-label="Copy Valepath contact email to clipboard"
-          >
-            <span class="contact-email__default">Copy email</span>
-            <span class="contact-email__done" aria-hidden="true">Copied &check;</span>
-          </a>
+          <CopyEmail />
         </div>
       </section>
     </main>
@@ -300,29 +290,5 @@ const ddDimensions = [
     <SiteFooter />
   </div>
 
-  <script is:inline>
-    document.querySelectorAll('.contact-email').forEach((button) => {
-      button.addEventListener('click', async (event) => {
-        event.preventDefault();
-        const local = [111, 114, 100, 101, 112].reverse();
-        const domain = [109, 111, 99, 46, 104, 116, 97, 112, 101, 108, 97, 118].reverse();
-        const email = String.fromCharCode(...local, 64, ...domain);
-        try {
-          await navigator.clipboard.writeText(email);
-        } catch {
-          const textArea = document.createElement('textarea');
-          textArea.value = email;
-          textArea.setAttribute('readonly', '');
-          textArea.style.position = 'absolute';
-          textArea.style.left = '-9999px';
-          document.body.appendChild(textArea);
-          textArea.select();
-          document.execCommand('copy');
-          textArea.remove();
-        }
-        button.classList.add('is-copied');
-        window.setTimeout(() => button.classList.remove('is-copied'), 1800);
-      });
-    });
-  </script>
+
 </Base>

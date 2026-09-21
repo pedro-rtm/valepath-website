@@ -1,0 +1,200 @@
+---
+import Base from '../layouts/Base.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+
+const dimensions = [
+  ['Architecture & infrastructure', 'System topology, technical debt, scalability, resilience and integration constraints.'],
+  ['Team & organisation', 'Key-person dependencies, capability gaps, outsourcing and ownership.'],
+  ['Security & compliance', 'Access controls, security practices, incident history and material compliance gaps.'],
+  ['Data & analytics', 'Data quality, governance, integration, privacy and reliability of management information.'],
+  ['AI & proprietary technology', 'Model dependencies, data provenance, IP governance and durability of technical advantage.'],
+  ['Cost structure', 'Technology spend, cloud and licence commitments, vendor exposure and cost-to-fix.'],
+  ['Delivery capability', 'Engineering practices, release reliability, quality assurance and roadmap execution.'],
+  ['Strategic alignment & bolt-on readiness', 'Fit with the investment thesis, integration effort and ability to support the business plan.'],
+];
+const deliverables = [
+  ['Risk scorecard', 'An eight-dimension assessment identifying material findings, their supporting evidence and the gaps that remain.'],
+  ['Phased cost-to-fix', 'Remediation estimates sequenced by urgency, with assumptions, dependencies and uncertainty made explicit.'],
+  ['Executive summary', 'Investment-committee-ready conclusions: what supports the thesis, what threatens it and which conditions matter.'],
+  ['First-100-day priorities', 'A sequenced operational plan with proposed owners, dependencies and measures of progress.'],
+  ['Transaction implications', 'Technical findings translated into issues for the deal team and its advisers to consider in pricing, protections and integration planning.'],
+  ['Full diligence report', 'The evidence, assessment and recommendations brought together in a report the deal team can use before and after close.'],
+];
+---
+
+<Base
+  title="Technology Due Diligence for Investors & Acquirers — Valepath"
+  description="Technology due diligence grounded in implementation experience. Quantified risks, phased remediation costs and post-acquisition priorities for PE teams and strategic acquirers."
+>
+  <div class="page dd-page">
+    <SiteHeader />
+    <main>
+      <section class="hero">
+        <p class="hero__eyebrow">For investors and acquirers</p>
+        <h1>Technology due diligence.<br />Grounded in execution.</h1>
+        <p class="hero__lead">Understand the technology risk behind the acquisition—and what it will take to realise the investment thesis.</p>
+        <p>For PE deal teams, operating partners and strategic acquirers. Valepath translates systems, team and delivery findings into remediation costs, investment implications and post-acquisition priorities.</p>
+        <div class="hero__ctas">
+          <a href="/#contact" class="btn">Discuss a transaction &rarr;</a>
+          <a href="/sample-dd-report.pdf" class="btn btn--secondary" download>Download sample report &darr;</a>
+        </div>
+        <p class="dd-caption">Sample report: an illustrative assessment of a fictional LegalTech target.</p>
+      </section>
+
+      <section class="section section--alt" id="engagement-options">
+        <p class="section-kicker">When to engage</p>
+        <h2>From initial screen to post-close priorities.</h2>
+        <p class="section-lead">Choose the depth of assessment around the decision, target complexity and transaction timetable.</p>
+        <div class="mode-grid">
+          <article class="mode-card">
+            <span class="mode-card__number">Before full diligence</span>
+            <h3>Pre-LOI technology screen</h3>
+            <p>An early view of material technology risks before committing to full diligence.</p>
+            <ul>
+              <li>Architecture, security and AI red flags</li>
+              <li>Priority risks and unanswered questions</li>
+              <li>A concise decision memo and proposed scope for deeper review</li>
+            </ul>
+            <p class="dd-timing">Indicative window: 2–3 working days.</p>
+          </article>
+          <article class="mode-card mode-card--featured">
+            <span class="mode-card__number">During diligence</span>
+            <h3>Full technology DD</h3>
+            <p>An eight-dimension assessment tied to the investment thesis and its execution requirements.</p>
+            <ul>
+              <li>Material risks and evidence-backed conclusions</li>
+              <li>Phased remediation costs and transaction implications</li>
+              <li>Investment committee summary and first-100-day priorities</li>
+            </ul>
+            <p class="dd-timing">Indicative window: 10–15 working days.</p>
+          </article>
+          <article class="mode-card">
+            <span class="mode-card__number">After acquisition</span>
+            <h3>Post-close 100-day plan</h3>
+            <p>Turn the findings into a programme the portfolio company can execute.</p>
+            <ul>
+              <li>Sequenced workstreams and named owners</li>
+              <li>KPI baselines and governance cadence</li>
+              <li>Cost actions, integration priorities and delivery dependencies</li>
+            </ul>
+            <p class="dd-timing">Indicative window: 2–3 weeks to prepare the plan.</p>
+          </article>
+        </div>
+        <p class="dd-caption">Delivery windows depend on scope, evidence availability and management access. Fees and timing are agreed after scoping. AI/IP risk and bolt-on readiness can also be scoped as focused reviews.</p>
+      </section>
+
+      <section class="section" id="deliverables">
+        <p class="section-kicker">What you receive</p>
+        <h2>Findings you can use in the decision.</h2>
+        <p class="section-lead">Full diligence connects the technical assessment to the cost, sequence and practical implications of change.</p>
+        <div class="capability-grid">
+          {deliverables.map(([title, description], index) => (
+            <article class="capability-card">
+              <span class="capability-card__index">{String(index + 1).padStart(2, '0')}</span>
+              <h3>{title}</h3>
+              <p>{description}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section class="section section--alt" id="sample">
+        <div class="dd-grid">
+          <div>
+            <p class="section-kicker">Illustrative deliverable</p>
+            <h2>See how a finding becomes a priority.</h2>
+            <p>Review the existing sample report for a fictional LegalTech target: executive conclusions, dimension assessments, remediation costs and a first-100-day plan.</p>
+            <p>The company, findings and financial estimates in the sample are illustrative, not client results.</p>
+            <a href="/sample-dd-report.pdf" class="btn" download>Download sample report &darr;</a>
+          </div>
+          <article class="mode-card">
+            <span class="mode-card__number">Illustrative finding</span>
+            <h3>Integration limits the acquisition thesis.</h3>
+            <dl class="dd-example">
+              <dt>Evidence to examine</dt>
+              <dd>Tenant separation, interfaces and manual data reconciliation.</dd>
+              <dt>Investment consequence</dt>
+              <dd>Each bolt-on may require additional engineering effort, delaying integration and expected synergies.</dd>
+              <dt>Decision-ready output</dt>
+              <dd>A costed remediation sequence, explicit dependencies and an owner for the first integration milestone.</dd>
+            </dl>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="framework">
+        <p class="section-kicker">Assessment framework</p>
+        <h2>Eight dimensions. One investment context.</h2>
+        <p class="section-lead">The framework keeps the assessment systematic; the investment thesis determines which findings are material.</p>
+        <div class="dd-framework">
+          {dimensions.map(([title, description], index) => (
+            <article class="capability-card">
+              <span class="capability-card__index">{String(index + 1).padStart(2, '0')}</span>
+              <h3>{title}</h3>
+              <p>{description}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section class="section section--alt" id="process">
+        <p class="section-kicker">How it works</p>
+        <h2>Scope. Assess. Read out.</h2>
+        <div class="mode-grid">
+          <article class="mode-card">
+            <span class="mode-card__number">01 / Scope the decision</span>
+            <h3>Start with the thesis.</h3>
+            <p>Agree the target, transaction context, key questions, required access, deliverables and timetable.</p>
+          </article>
+          <article class="mode-card">
+            <span class="mode-card__number">02 / Test the evidence</span>
+            <h3>Establish what is material.</h3>
+            <p>Review documentation, systems and management evidence. Investigate risks and quantify remediation effort, making evidence gaps explicit.</p>
+          </article>
+          <article class="mode-card">
+            <span class="mode-card__number">03 / Read out the implications</span>
+            <h3>Make the findings usable.</h3>
+            <p>Walk the deal team through the conclusions, cost-to-fix and post-close priorities. Resolve questions and agree any further work.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <p class="section-kicker">The operating experience behind the assessment</p>
+        <h2>Recommendations informed by implementation.</h2>
+        <p class="section-lead">Valepath’s transformation practice spans 80+ initiatives across nine industries since 2013. That experience informs the practical work of changing systems, organisations and operations.</p>
+        <p>The engagement can conclude with the diligence decision or continue into separately scoped implementation and capability transfer.</p>
+        <div class="hero__ctas">
+          <a href="/case-studies/" class="btn btn--secondary">See the transformation record &rarr;</a>
+          <a href="/#engagements" class="text-link">Explore the broader practice &rarr;</a>
+        </div>
+      </section>
+
+      <section class="section" id="discuss">
+        <p class="section-kicker">Discuss a transaction</p>
+        <h2>Bring the target, thesis and timeline.</h2>
+        <p>A brief description of the company, the decision you need to make and your deadline is enough to begin scoping.</p>
+        <a href="/#contact" class="btn">Get in touch &rarr;</a>
+      </section>
+    </main>
+    <SiteFooter />
+  </div>
+</Base>
+
+<style>
+  .hero h1 { max-width: 25ch; }
+  .dd-framework {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--sp-3);
+    margin-top: var(--sp-5);
+  }
+  .dd-timing { margin-top: var(--sp-4); }
+  .dd-example dt { color: var(--text); font-weight: 600; margin-top: var(--sp-4); }
+  .dd-example dd { color: var(--text-secondary); margin-top: var(--sp-1); }
+  .dd-example { font-size: clamp(0.875rem, 1.5vw, 1rem); }
+  @media (max-width: 560px) {
+    .dd-framework { grid-template-columns: 1fr; }
+  }
+</style>

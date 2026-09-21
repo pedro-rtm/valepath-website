@@ -6,6 +6,23 @@ Source for Valepath's technology-transformation practice website.
 - Production host: Cloudflare Pages project `valepath-website`
 - Framework: Astro static output
 
+## Website positioning
+
+The homepage represents the broader transformation practice. Its DD section follows
+Assess / Deploy / Transfer and routes investors to `/technology-due-diligence/`.
+The dedicated page recovers the engagement options and deliverable structure from
+`fcbd20c`, before the August 2026 expansion, in the current site design.
+
+Audience: PE deal teams, operating partners and strategic acquirers evaluating an
+engagement on desktop or mobile. They need to identify the appropriate scope,
+understand outputs and indicative timing, inspect a sample and initiate contact.
+The page uses concise cards, responsive columns and ordinary links without adding
+forms, tracking, dependencies or a new data flow. Existing visual tokens are retained.
+
+Historical prices and peer-benchmark claims are omitted. Delivery windows are
+indicative and conditioned on scope and access. Sample material is labelled fictional;
+80+ initiatives describes the transformation record, not completed transaction DDs.
+
 ## Local development
 
 ```bash
@@ -23,6 +40,24 @@ The deployable site is emitted to `dist/`. GitHub Actions verifies this build bu
 not deploy it.
 
 ## Deployment
+
+### Current transport policy (2026-09-21)
+
+The 2026-09-08 standing policy in `/Users/pedro/Stuff/CLOUDFLARE-CREDENTIALS.md`
+requires the authenticated Cloudflare plugin. It supersedes the legacy credential
+runner instructions below. Preserve exact project/commit/artifact checks and verify
+production after publication; do not extract plugin credentials or upload JWTs.
+
+On 2026-09-21 the plugin verified project `valepath-website`, immutable ID
+`691c1c43-cfe0-443b-830d-8abeb8e81462`, production branch `main`, domains
+`valepath.com` and `www.valepath.com`, and a deployment without Functions.
+The read-only asset presence probe (`POST /pages/assets/check-missing`, empty hashes)
+failed with HTTP 403, code 8000013, "Authorization failed". The endpoint requires an
+upload JWT, while the plugin request interface offers no authentication override.
+No production mutation was attempted. Using the legacy runner for this concrete
+capability gap requires explicit owner direction.
+
+### Legacy runner reference
 
 Deployments use Wrangler Direct Upload through the versioned runner in
 `tools/portfolio-credentials/`. It accepts no target arguments and fixes account

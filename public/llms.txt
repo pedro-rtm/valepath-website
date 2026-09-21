@@ -21,10 +21,11 @@ AI is a current capability within the broader enterprise estate. It does not rep
 2. Deploy — implement the technology and operating change in production.
 3. Transfer — leave internal ownership, governance, documentation, and capability behind.
 
-Technology due diligence is one engagement type. It covers architecture, team, security, data, AI and proprietary technology, cost structure, delivery capability, strategic alignment, and bolt-on readiness.
+Technology due diligence is a dedicated offer for PE deal teams, operating partners and strategic acquirers, within the broader transformation practice. Engagement options include a pre-LOI technology screen, full technology DD and a post-close 100-day plan. Scope, fees and timing are agreed after scoping. It covers architecture, team, security, data, AI and proprietary technology, cost structure, delivery capability, strategic alignment, and bolt-on readiness.
 
 ## Pages
 - / — Transformation practice, capabilities, method, track record, due diligence, references, and contact
+- /technology-due-diligence/ — Engagement options, deliverables, illustrative sample, eight-dimension framework and process
 - /case-studies/ — Nine detailed company-wide transformation cases
 - /case-studies/{company}/ — Initiative-level deployment record and outcomes
 - /sample-dd-report.pdf — Illustrative technology due-diligence report

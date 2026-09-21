@@ -176,6 +176,11 @@ a:hover { color: var(--text-muted); text-decoration: underline; }
   gap: var(--sp-3);
   flex-wrap: wrap;
   align-items: center;
+  margin-top: var(--sp-4);
+}
+
+.hero__ctas > .btn {
+  margin-top: 0;
 }
 
 .deliverable-card--download {
@@ -857,22 +862,15 @@ footer a:hover { color: var(--text); }
   margin-top: var(--sp-2);
 }
 
-.contact-email {
+button.contact-email {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--accent);
+  font: inherit;
   cursor: pointer;
 }
-
-.contact-email__done {
-  display: none;
-  color: var(--accent);
-}
-
-.contact-email.is-copied .contact-email__default {
-  display: none;
-}
-
-.contact-email.is-copied .contact-email__done {
-  display: inline;
-}
+button.contact-email:hover { color: var(--text-muted); text-decoration: underline; }
 
 /* === Responsive === */
 @media (max-width: 700px) {
@@ -1464,4 +1462,25 @@ footer a:hover { color: var(--text); }
   .key-metric-item:first-child { padding-left: var(--sp-4); }
   .key-metric-item:nth-child(even) { border-right: 0; }
   .prev-next { flex-direction: column; }
+}
+
+/* DD offer and supporting context */
+.dd-caption {
+  margin-top: var(--sp-4);
+  font-size: clamp(0.8rem, 1.5vw, 0.875rem);
+  max-width: 80ch;
+}
+.dd-output-summary h3 { margin-bottom: var(--sp-4); }
+.header__nav a[aria-current="page"] { color: var(--text); }
+
+/* The archive card makes the breadth of the transformation record explicit. */
+.case-card--archive {
+  justify-content: center;
+  min-height: 14rem;
+  padding: var(--sp-4);
+  background: var(--bg-inset);
+  border-color: var(--accent);
+}
+@media (min-width: 561px) and (max-width: 820px) {
+  .featured-cases .case-card--archive { grid-column: 1 / -1; }
 }

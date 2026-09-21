@@ -16,10 +16,8 @@ const path = Astro.url.pathname;
     <span class="nav-toggle__bar"></span>
   </button>
   <nav class="header__nav" id="primary-nav" aria-label="Primary navigation">
-    <a href="/#engagements">Engagements</a>
-    <a href="/#capabilities">Capabilities</a>
-    <a href="/case-studies/" class:list={{ active: path.startsWith('/case-studies') }}>Case Studies</a>
-    <a href="/#about">About</a>
+    <a href="/technology-due-diligence/" class:list={{ active: path.startsWith('/technology-due-diligence') }} aria-current={path.startsWith('/technology-due-diligence') ? 'page' : undefined}>Technology DD</a>
+    <a href="/case-studies/" class:list={{ active: path.startsWith('/case-studies') }}>Transformations</a>
     <a href="/#contact" class="nav-cta">Get in Touch</a>
   </nav>
 </header>
