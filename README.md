@@ -57,6 +57,26 @@ upload JWT, while the plugin request interface offers no authentication override
 No production mutation was attempted. Using the legacy runner for this concrete
 capability gap requires explicit owner direction.
 
+### Verified release — 2026-09-21
+
+After the plugin upload-authentication failure, Pedro authorized the existing-token
+fallback for this release. The existing issuer funded a dedicated Pages credential
+through the fixed provisioner; its verified metadata is stored in 1Password item
+`Valepath Website Cloudflare Pages Deploy` and the manifest's login-Keychain service.
+Expires: 2027-03-20. No credential values are recorded here.
+
+The runner was refreshed from the reviewed fleet template (Direct Upload source may
+be omitted or null). The provisioner's host pins were refreshed after Apple signature
+verification on macOS 27, and its renamed issuer reference was resolved by stable IDs.
+Provisioner tests: 76 passed. Runner tests: 81 passed. GitHub CI: passed.
+
+Production deployment `173f3c22-006c-4425-a7b0-049dda00f4ac` serves commit
+`c8f2d5190786c84e42ef40bae6f1a8d81feb8ae4`. Cloudflare confirmed the canonical
+production deployment and successful status. Public browser checks verified the
+homepage label, three navigation items, transformation archive, dedicated DD page,
+and clipboard content/temporary feedback on four routes. No booking link remains.
+This receipt-only documentation update does not change the deployed site assets.
+
 ### Legacy runner reference
 
 Deployments use Wrangler Direct Upload through the versioned runner in
