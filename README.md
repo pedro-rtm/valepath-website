@@ -41,105 +41,28 @@ not deploy it.
 
 ## Deployment
 
-### Current transport policy (2026-09-21)
+Production is published by Cloudflare Pages Direct Upload from a local checkout. The
+Pages project `valepath-website` (immutable ID `691c1c43-cfe0-443b-830d-8abeb8e81462`,
+account `82675093f8de0440782f81032b6a33d1`, production branch `main`, domains
+`valepath.com` and `www.valepath.com`) has no Git integration. The site is static: no
+Pages Functions, `_worker.js` or Wrangler configuration. Do not re-enable GitHub Pages
+or add a GitHub Pages `CNAME` file.
 
-The 2026-09-08 standing policy in `/Users/pedro/Stuff/CLOUDFLARE-CREDENTIALS.md`
-requires the authenticated Cloudflare plugin. It supersedes the legacy credential
-runner instructions below. Preserve exact project/commit/artifact checks and verify
-production after publication; do not extract plugin credentials or upload JWTs.
-
-On 2026-09-21 the plugin verified project `valepath-website`, immutable ID
-`691c1c43-cfe0-443b-830d-8abeb8e81462`, production branch `main`, domains
-`valepath.com` and `www.valepath.com`, and a deployment without Functions.
-The read-only asset presence probe (`POST /pages/assets/check-missing`, empty hashes)
-failed with HTTP 403, code 8000013, "Authorization failed". The endpoint requires an
-upload JWT, while the plugin request interface offers no authentication override.
-No production mutation was attempted. Using the legacy runner for this concrete
-capability gap requires explicit owner direction.
-
-### Verified release — 2026-09-21
-
-After the plugin upload-authentication failure, Pedro authorized the existing-token
-fallback for this release. The existing issuer funded a dedicated Pages credential
-through the fixed provisioner; its verified metadata is stored in 1Password item
-`Valepath Website Cloudflare Pages Deploy` and the manifest's login-Keychain service.
-Expires: 2027-03-20. No credential values are recorded here.
-
-The runner was refreshed from the reviewed fleet template (Direct Upload source may
-be omitted or null). The provisioner's host pins were refreshed after Apple signature
-verification on macOS 27, and its renamed issuer reference was resolved by stable IDs.
-Provisioner tests: 76 passed. Runner tests: 81 passed. GitHub CI: passed.
-
-Production deployment `173f3c22-006c-4425-a7b0-049dda00f4ac` serves commit
-`c8f2d5190786c84e42ef40bae6f1a8d81feb8ae4`. Cloudflare confirmed the canonical
-production deployment and successful status. Public browser checks verified the
-homepage label, three navigation items, transformation archive, dedicated DD page,
-and clipboard content/temporary feedback on four routes. No booking link remains.
-This receipt-only documentation update does not change the deployed site assets.
-
-### Legacy runner reference
-
-Deployments use Wrangler Direct Upload through the versioned runner in
-`tools/portfolio-credentials/`. It accepts no target arguments and fixes account
-`82675093f8de0440782f81032b6a33d1`, Pages project `valepath-website` with immutable ID
-`691c1c43-cfe0-443b-830d-8abeb8e81462`, branch `main`, output `dist`, Wrangler
-`4.128.0`, and the artifact limits in `capability.json`.
-The application owns no Wrangler dependency; the reviewed runner carries its own
-lifecycle-disabled, registry-integrity-locked toolchain.
-
-This capability admits a static build only. Pages Functions, `_worker.js`, Wrangler
-configuration, preview branches, and caller-supplied targets fail closed. The danger
-case is destructive or wrong-project mutation: Cloudflare's Pages Write grant is
-account-scoped and may affect every Pages project in the account even though this
-runner permits only the immutable Valepath target.
-
-### One-time credential enrollment
-
-Use an account-owned token with an explicit 180-day expiry and Cloudflare Pages Write
-only—never Workers, storage, DNS, WAF, Billing, or token administration. Save it in
-1Password as `Valepath Website Cloudflare Pages Deploy`. The runner enrolls only
-account `api-token` under login-Keychain service
-`com.pedrortm.valepath-website.cloudflare.pages-deploy`.
-
-After the owner creates and saves the reviewed token, run from a clean, fully pushed
-`main`:
+Run this only when the current task explicitly authorizes production publication, from
+a clean `main` equal to `origin/main`:
 
 ```bash
-npm run cloudflare:status
-npm run cloudflare:enroll
-npm run cloudflare:verify
-```
-
-`enroll` transfers the secret through a hidden prompt; never place it in a command,
-environment variable, file, generated asset, or CI secret. Run `verify` immediately,
-then inspect the item in Keychain Access: only `/usr/bin/security` may be trusted and
-“Allow all applications” must be disabled.
-
-Authentication and authorization are separate boundaries. `status` reads Keychain
-metadata only; `enroll` is an explicitly authorized attended transfer; `verify` makes
-bounded non-mutating Cloudflare reads; and `deploy` is the only mutating
-command. Credential availability never authorizes deployment. GitHub Actions builds
-but holds no Cloudflare credential and cannot deploy.
-
-### Routine deployment
-
-Run this only when the current task explicitly authorizes production publication:
-
-```bash
+npm ci
 npm run deploy
 ```
 
-The runner proves `HEAD == origin/main ==` the live remote branch, builds the committed
-source with the locked dependency graph in a private workspace, validates `dist`, and
-only then reads the dedicated Keychain replica. Credential possession is not
-deployment authorization. Do not re-enable GitHub Pages or add a GitHub Pages `CNAME`
-file.
+`deploy` builds `dist/`, then `op run` resolves the references in `deploy.env` into the
+Wrangler process only. The token is a non-expiring Pages Write token on the Velkan
+Cloudflare account, held in 1Password (vault Velkan, item `Cloudflare — Velkan`, field
+`Valepath Website — Pages Deploy`); the runbook is `CLOUDFLARE-CREDENTIALS.md` in the
+studio repository. Never copy the value into a file, environment variable or CI secret.
+Pages Write is account-scoped: it can alter or delete any Pages project in the account,
+so credential possession is not publication authorization.
 
-Pages Write remains account-scoped even though the runner fixes one project. If the
-token is exposed, over-scoped, superseded, or retired, revoke it in Cloudflare and
-remove only this exact Keychain replica; retain non-secret lifecycle evidence in
-1Password. Begin rotation at least 30 days before expiry: create and record the
-replacement, delete the predecessor's exact Keychain item because in-place replacement
-is forbidden, enroll and verify the replacement, and only then revoke the predecessor
-in Cloudflare. See
-[`tools/portfolio-credentials/README.md`](tools/portfolio-credentials/README.md).
+The last release through the retired runner was production deployment
+`173f3c22-006c-4425-a7b0-049dda00f4ac` (commit `c8f2d51`, 2026-09-21).

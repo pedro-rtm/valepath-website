@@ -8,10 +8,7 @@
     "build:cloudflare": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "cloudflare:status": "/opt/homebrew/opt/node@24/bin/node tools/portfolio-credentials/bin/status.mjs",
-    "cloudflare:enroll": "/opt/homebrew/opt/node@24/bin/node tools/portfolio-credentials/bin/enroll.mjs",
-    "cloudflare:verify": "/opt/homebrew/opt/node@24/bin/node tools/portfolio-credentials/bin/verify.mjs",
-    "deploy": "/opt/homebrew/opt/node@24/bin/node tools/portfolio-credentials/bin/deploy.mjs"
+    "deploy": "npm run build && op run --env-file=deploy.env -- npx --yes wrangler@4.128.0 pages deploy dist --project-name=valepath-website --branch=main"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.0",
