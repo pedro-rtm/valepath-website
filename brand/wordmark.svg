@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 70">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif&amp;display=swap');
+    </style>
+  </defs>
+  <rect x="0" y="10" width="3" height="48" fill="#a0714f"/>
+  <text
+    x="18"
+    y="50"
+    font-family="'Instrument Serif', Georgia, serif"
+    font-size="44"
+    font-weight="400"
+    letter-spacing="-0.02em"
+    fill="#1a1e2e"
+  >Valepath</text>
+</svg>
